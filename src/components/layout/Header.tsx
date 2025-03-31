@@ -19,10 +19,11 @@ const Header: React.FC = () => {
         <ul className="flex space-x-6">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <Link href={link.href}>
-                <a className="text-accent hover:text-white transition-colors duration-300">
-                  {link.name}
-                </a>
+              <Link 
+                href={link.href}
+                className="text-accent hover:text-white transition-colors duration-300"
+              >
+                {link.name}
               </Link>
             </li>
           ))}

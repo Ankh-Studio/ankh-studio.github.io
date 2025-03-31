@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../lib/animations";
+import Image from 'next/image'
 
 const Hero: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const Hero: React.FC = () => {
           className="mb-8"
         >
           {/* Dynamic Ankh symbol animation transitioning to circuitry */}
-          <img src="/ankh-animation.svg" alt="Ankh transitioning into circuitry" className="mx-auto" />
+          <img src="/ankh-animation.svg" alt="Ankh transitioning into circuitry" className="mx-auto" /> 
         </motion.div>
         <motion.a
           href="#discover"
