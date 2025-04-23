@@ -1,0 +1,13 @@
+
+$adj: 36;
+
+.ANKH {
+  span {
+    letter-spacing: -5px;
+
+    &:nth-child(2) {
+      letter-spacing: -#{$adj}px;
+      padding-right: #{$adj}px;
+    }
+  }
+}

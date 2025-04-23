@@ -1,0 +1,61 @@
+@use "sass:math";
+
+
+@mixin glass-blur(
+  $bg: rgba(255, 255, 255, 0.1),
+  $blur: 10px,
+  $border: 1px solid rgba(255,255,255,0.2),
+  $radius: 16px,
+){
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: $border;
+  border-radius: $radius;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+
+@mixin mobile {
+  @media (max-width: 738px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin min-height($hmin) {
+  @media (min-height: $hmin){
+    @content;
+  }
+}
+
+@mixin max-height($hmax) {
+  @media (max-height: $hmax){
+    @content;
+  }
+}
+
+@mixin min-width($wmin) {
+  @media (min-widht: $wmin){
+    @content;
+  }
+}
+
+@mixin max-width($wmax) {
+  @media (max-widht: $wmax){
+    @content;
+  }
+}
+
+@function rem($pixels){
+  @return math.div($pixels, 16) * 1rem;
+}

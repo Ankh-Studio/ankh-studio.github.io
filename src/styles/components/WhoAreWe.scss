@@ -1,0 +1,125 @@
+@import "../mixins.scss";
+
+.whoAreWe {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .h1 {
+    font-smooth: auto;
+    position: absolute;
+    font-size: 10rem;
+    color: white;
+  }
+  
+  .transitionContainer {
+      width: 100vw;
+      height: 100vh;
+
+    .transition {
+      position : absolute;
+      top      : 0;
+      left     : 0;
+      right    : 0;
+      bottom   : 0;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom center;
+    }
+  }
+
+  .pyramidContainer {
+    width: 100vw;
+    height: 100vh;
+
+    .pyramid {
+      position : absolute;
+      top      : 0;
+      left     : 0;
+      right    : 0;
+      bottom   : 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center top;
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+
+  .content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    justify-content: center;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    .title {
+      display: flex;
+      justify-content: space-around;
+      width: 100vw;
+      height: 10vh;
+
+      h1 {
+        display: inline-block;
+        font-size: 7.5rem;
+      }
+    }
+    .ankhDescription {
+      display: flex; 
+      justify-content: center;
+      width: 100vw;
+      height: 20vh;
+
+      h2 {
+        display: inline-block;
+        font-size: 3.0rem;
+        color: gray;
+        text-align: center;
+      }
+    }
+  }
+
+
+  .eclipse {
+    width: 100vw;
+    height: 100vh;
+
+    .sun,
+    .moon {
+      position: absolute;
+      overflow : hidden;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      width    : 200px;
+      height   : 200px;
+      left     : calc(50vw - 100px);
+      right    : calc(50vw - 100px);
+    }
+    .moon {
+      top      : calc(15vh - 96px);
+    }
+    .daymoon {
+      filter: sepia(100%);
+    }
+    .sun {
+      top      : calc(15vh - 100px);
+    }
+
+    .totalEclipseContainer {
+      position: absolute;
+      overflow : hidden;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      width  : 275px;
+      height : 275px;
+      left     : calc(50vw - 140px);
+      top      : calc(15vh - 133px);
+    }
+  }
+}

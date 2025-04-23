@@ -1,0 +1,415 @@
+
+@import "./Team_stars.scss";
+$img_size: 30vw;
+$bg_gradient: linear-gradient(
+  to top right, 
+  rgba(0,0,0,1) 0%,
+  rgba(14, 17, 22, 1) 80%, 
+  rgba(5, 7, 12, 1) 100%
+);
+.TeamPage,
+.TeamMemberDesktop {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Card {
+  border-top: 1px solid rgba(150, 150, 150, 0.5);
+  border-left: 1px solid rgba(150, 150, 150, 0.2);
+  border-radius: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  overflow: hidden;
+
+  .CardBackground {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    background: $bg_gradient;
+  }
+}
+
+.TeamPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 8rem;
+  overflow: clip;
+
+  @include tablet {
+    padding: 2.5rem;
+  }
+
+  background: radial-gradient(
+    rgba(14, 20, 22, 0.5),
+    rgba(0,0,0,1),
+  );
+
+  .TitleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 15vh;
+    text-align: center;
+
+    @include tablet {
+      height: 10vh;
+    }
+
+    .Title {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      font-size: 9rem;
+      font-weight: 800;
+
+      @include tablet {
+        font-size: 6.8rem;
+      }
+
+      .TitleAlignment {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  }
+
+  .TeamMemberDesktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    height: 50vh;
+    > div {
+      transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;
+    }
+    .FounderExpand:nth-of-type(1){
+      transform: translateX(0);
+    }
+    .FounderExpand:nth-of-type(2){
+      transform: translateX(-25vw);
+    }
+    .FounderExpand:nth-of-type(3){
+      transform: translateX(-50vw);
+    }
+
+    .FounderClear {
+      opacity: 0;
+    }
+    width: 80vw;
+
+    .Founder {
+      width: 25vw;
+      height: 25vw;
+      margin: 12px 0 5px 5px;
+      position: relative;
+      padding: 5px;
+      border-top-right-radius    : 9999px;
+      border-top-left-radius     : 9999px;
+      border-bottom-right-radius : 9999px;
+      border-bottom-left-radius  : 9999px;
+
+      &_wrap {
+        position: relative;
+        overflow: clip;
+        display: flex;
+        border-radius: 9999px;
+        background: $bg_gradient;
+      }
+
+      &_container {
+        display: flex;
+        height: 25vw;
+
+        .FounderImage {
+          margin-right: auto;
+          margin-left: auto;
+          border-radius: 9999px;
+          overflow: clip;
+          cursor: pointer;
+          border: 2px solid rgba(50, 40, 10, 1.0);
+
+          &_src {
+            position: absolute;
+            z-index: -10;
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+
+          &_overlay {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background-clip: text;
+            color: transparent;
+            background-size: contain;
+            text-shadow: -1px -1px 0 rgba(200,200,200,0.01), 
+              1px -1px 0 rgba(200,200,200,0.05), 
+              -1px 1px 0 rgba(200,200,200,0.05),
+              1px 1px 0 rgba(200,200,200,0.05);
+            line-height: 6.66rem;
+            opacity: 0;
+            transition: opacity 0.375 ease-in-out;
+
+            h1 {
+              font-size: 5vw;
+            }
+            // FirstName
+            h1:nth-of-type(1) {
+              font-weight: 700;
+              margin-top: auto;
+              margin-bottom: -24px;
+            }
+            // LastName
+            h1:nth-of-type(2) {
+              font-weight: 600;
+              margin-bottom: auto;
+              margin-top: -8px;
+              padding-top: 36px;
+            }
+
+
+            @include mobile {
+              h1 {
+                font-size: 3rem;
+              }
+            }
+            @include tablet {
+              h1 {
+                line-height: 2.8rem;
+              }
+            }
+          }
+          .ShowOverlay {
+            opacity: 1;
+          }
+
+          @include mobile {}
+          @include tablet {
+            opacity: 1;
+          }
+        }
+
+        .FounderInfo {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          margin-top: auto;
+          margin-bottom: auto;
+          width: 69vw;
+          // width: 100%;
+
+          &_title {
+            width: 100%;
+            display: flex;
+            justify-content: start;
+
+
+            h1 {
+              font-size: 4.2rem;
+              letter-spacing: 0.1em;
+              margin-top: auto;
+              padding-left: 2.5rem;
+              filter: sepia(0.25);
+            }
+
+            @include tablet {
+              h1 {
+                font-size: 2.8rem;
+              }
+            }
+          }
+
+          &_description {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-left: 3rem;
+
+            h2 {
+              font-size: 2rem;
+              line-height: 2rem;
+              width: 25vw;
+              margin-top: 2.5rem;
+              font-weight: 200;
+              filter: sepia(0.55) saturate(0.4);
+            }
+            h3 {
+              font-size: 1.8rem;
+              margin-bottom: 1.5rem;
+              filter: sepia(0.55);
+            }
+
+            @include tablet {
+              h2 {
+                width: 75%;
+                font-size: 1.0rem;
+                line-height: 1rem;
+                margin-top: 1.5rem;
+              }
+
+              h3 {
+                font-size: 1rem;
+              }
+            }
+
+          }
+
+          &_mantra {
+            width: 100%;
+            height: 10rem;
+            display: flex;
+            justify-content: flex-start;
+            font-weight: 200;
+
+            h2 {
+              opacity: 0.5;
+              font-size: 1.4rem;
+              margin-bottom: auto;
+              padding: 1.5rem 0 1rem 3rem;
+              border-radius: 1.5rem;
+            }
+
+            @include tablet {
+              height: 5rem;
+
+              h2 {
+                font-size: 0.8rem;
+                padding: 1.0rem 0 0.5rem 2.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  .TeamMemberTablet {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+
+    .FounderTablet {
+      height: 30vw;
+      overflow: clip;
+      opacity: 0.9;
+      transition: all 0.375s ease-in-out;
+
+        // transition: height 0.375s ease-in-out, transform 0.375s ease-in-out;
+
+      &Expand:nth-of-type(1) {
+      }
+      &Expand:nth-of-type(2) {
+        transform: translateY(-26.5vw);
+      }
+      &Expand:nth-of-type(3) {
+        transform: translateY(-56.5vw);
+      }
+      &Expand {
+        height: 96vw;
+      }
+
+      &Clear {
+        opacity: 0;
+      }
+
+      .FounderBG {
+        position: relative;
+        width: 80vw;
+        height: 80vw;
+        top: -5rem;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 9999px;
+      }
+
+      .FounderCard {
+        width: 87vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: clip;
+
+        &Backdrop {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          overflow: clip;
+
+          @include glass-blur(
+            $bg: rgba(0,0,0,0.1),
+            $radius: 1.5rem,
+          );
+
+          .TextClip {
+            width: 80vw;
+            height: 80vw;
+            background-clip: text;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            justify-content: start;
+            color: rgba(200,200,200,0.1);
+            text-shadow: -1px -1px 0 rgba(200,200,200,0.01), 
+              1px -1px 0 rgba(200,200,200,0.05), 
+              -1px 1px 0 rgba(200,200,200,0.05),
+              1px 1px 0 rgba(200,200,200,0.05);
+
+            h1 {
+              text-align: center;
+              font-size: 11rem;
+              font-weight: 900;
+            }
+          }
+
+          .FounderDescription {
+            height: 100vw;
+            opacity: 0;
+            transition: all 0.350s ease-in-out;
+            @include glass-blur(
+              $bg: rgba(200,200,200,0.1),
+              $radius: 1.5rem,
+            );
+
+            h2 {
+              margin: auto;
+              padding-top: 4rem;
+              padding-left: 2.0rem;
+              padding-right: 2.0rem;
+              text-align: center;
+              font-size: 2rem;
+              letter-spacing: 0.1rem;
+              line-height: 2.0rem;
+            }
+          }
+          .Show {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+

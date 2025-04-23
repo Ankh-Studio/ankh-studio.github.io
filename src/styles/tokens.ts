@@ -13,12 +13,29 @@ export interface DesignTokens {
   };
 }
 
+const colors = {
+  dark_accent: "#fefca0",
+  light_accent: "#fdf959",
+  dark_secondary: "#366530",
+  light_accent_two: "#c4fcf7",
+  background: "#0d0f07",
+  other_one: "#7ff6ab",
+  other_two: "#ddfdf1",
+  other_thr: "#3e719d",
+  text: "##fbfefe",
+  primary: "#a7361a",
+};
+
 export const tokens: DesignTokens = {
   colors: {
     primary: "#0A0A23",      // Midnight Blue
     accent: "#D4AF37",       // Gold
     secondary: "#CD7F32",    // Bronze
     background: "#0D0D0D",   // Ebony Black
+
+    bg_one: colors.background,
+    bg_two: colors.light_accent,
+    bg_thr: colors.primary,
   },
   typography: {
     sizes: {

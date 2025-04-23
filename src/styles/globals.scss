@@ -1,0 +1,110 @@
+@use "sass:math";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$bp-xs: 320px;
+$bp-mobile: 480px;
+$bp-s: 768px;
+$bp-desktop: 1024px;
+
+@import "variables";
+@import "./mixins";
+@import "components/hero.scss";
+@import "components/WhoAreWe.scss";
+@import "components/Team.scss";
+@import "components/ANKH.scss";
+@import "components/StarryBackground.scss";
+
+@layer base {
+  ::-webite-scrollbar {
+    display: none;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  html,
+  body {
+    scroll-snap-type: y mandatory;
+    scrollbar-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    padding: 0;
+    margin: 0;
+    font-family: 
+      -apple-system, 
+      BlinkMacSystemFont, 
+      Segoe UI, 
+      Roboto, 
+      Oxygen,
+      Ubuntu, 
+      Cantarell, 
+      Fira Sans, 
+      Droid Sans, 
+      Helvetica Neue, 
+      sans-serif;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  ul {
+    padding-left: 1.5rem;
+    li {
+      position: relative;
+      line-height: 1.5;
+      padding-left: 1.25rem;
+      margin-top: 0.25rem;
+      height: 2px;
+      margin-top: -1px;
+      top: 0.75em;
+    }
+  }
+
+  ol {
+    padding-left: 1.25rem;
+    counter-reset: item;
+
+    li {
+      position: relative;
+      line-height: 1.5;
+      padding-left: 1.25rem;
+      margin-top: 0.25em;
+
+      &:before {
+        left: -1.25rem;
+        position: absolute;
+        width: 1.25rem;
+        counter-increment: item;
+        content: counter(item) ".";
+        font-variant-numeric: tabular-nums;
+        font-weight: 400;
+        height: auto;
+        top: auto;
+      }
+    }
+  }
+
+  .list-none li::before {
+    content: unset;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webite-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
