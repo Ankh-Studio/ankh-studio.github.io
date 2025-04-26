@@ -54,10 +54,6 @@ export const TeamImage = ({
 
   const imageDisplay = {
     animate:  bpFilter({
-      mobile: {},
-      tablet: {
-        filter: Settings.ImgFilterTablet,
-      },
       desktop: {
         filter: hoverSelect(
           Settings.ImgFilterOn,
@@ -66,8 +62,6 @@ export const TeamImage = ({
       },
     }),
     transition: bpFilter({
-      mobile: {},
-      tablet: {},
       desktop: {
         duration: Settings.Duration,
       },

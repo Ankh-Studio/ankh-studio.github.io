@@ -10,6 +10,7 @@ import WhoAreWe from "../WhoAreWe";
 import DebugUIWindow from "../DebugUI";
 import AnkhTeam from "../AnkhTeam";
 import AnkhScrollBar from "../ScrollBar";
+import { TestTeam } from "../Testing";
 
 type SectionWrapperProps = {
   id         : string | number;
@@ -37,7 +38,7 @@ const SectionWrapper = ({
         width           : "100vw",
         height          : `${pageDepth}vh`,
         zIndex          : zIndex,
-        backgroundColor : themeColors.Background,
+        //backgroundColor : themeColors.Background,
       }}
     >
     <div 
@@ -185,6 +186,21 @@ const LandingPage = () => {
         className : "text-Dark-AccentThree" 
       });
     }, [totalHeight]);
+  }
+  const testing = true;
+
+  if( testing ){
+    return (
+      <ReactLenis root options={{
+        autoRef: false,
+        ...lenisOptions
+      }} ref={lenisRef}>
+        <TestTeam />
+        <div className={
+          "w-[100vw] h-[100vh] bg-blue-100"
+        }/>
+      </ReactLenis>
+    );
   }
 
   return (

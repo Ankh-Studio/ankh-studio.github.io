@@ -1,9 +1,11 @@
 
 /**  Animated Starry Background: 100% SASS
  **/
-const StarryBackground = () => {
+const StarryBackground = ({className}: { className?: string | undefined }) => {
   return (
-    <div style={{ opacity: 0.5 }}>
+    <div 
+      className={className}
+      style={{ opacity: 0.5 }}>
       <div className="starry_bg_animation right-[0vw]">
         <div className="stars"/>
         <div className="stars3"/>

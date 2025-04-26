@@ -15,6 +15,55 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
+@mixin Clamp($property, $min, $preferred, $max){
+  #{$property}: clamp(#{$min}, #{$preferred}, #{$max});
+}
+
+@mixin PadX($value: auto) {
+  padding-left  : $value;
+  padding-right : $value;
+};
+@mixin PadY($value: auto) {
+  padding-top    : $value;
+  padding-bottom : $value;
+};
+
+@mixin MarX($value: auto) {
+  margin-left  : $value;
+  margin-right : $value;
+};
+@mixin MarY($value: auto) {
+  margin-top    : $value;
+  margin-bottom : $value;
+};
+
+@mixin Animation($input) {
+  -webkit-animation : $input;
+  -moz-animation    : $input;
+  -ms-animation     : $input;
+  animation         : $input;
+}
+@mixin Transform($input){
+  -webkit-transform : $input;
+  -moztransform     : $input;
+  -ms-transform     : $input;
+  transform         : $input;
+}
+
+@mixin Keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+}
 
 @mixin mobile {
   @media (max-width: 738px) {
@@ -56,6 +105,11 @@
   }
 }
 
+@mixin Debug(){
+  background: rgba(200,0,0,0.3);
+}
+
 @function rem($pixels){
   @return math.div($pixels, 16) * 1rem;
 }
+

@@ -1,12 +1,19 @@
 
 @import "./Team_stars.scss";
-$img_size: 30vw;
+
+$lg: 80;
+$img: 25;
+
+$containerLg: #{$lg}vw;
+$img_size: #{$img}vw;
+
 $bg_gradient: linear-gradient(
   to top right, 
   rgba(0,0,0,1) 0%,
   rgba(14, 17, 22, 1) 80%, 
   rgba(5, 7, 12, 1) 100%
 );
+
 .TeamPage,
 .TeamMemberDesktop {
   margin-left: auto;
@@ -38,14 +45,7 @@ $bg_gradient: linear-gradient(
   padding: 8rem;
   overflow: clip;
 
-  @include tablet {
-    padding: 2.5rem;
-  }
-
-  background: radial-gradient(
-    rgba(14, 20, 22, 0.5),
-    rgba(0,0,0,1),
-  );
+  background: $BgRadial;
 
   .TitleContainer {
     display: flex;
@@ -67,7 +67,7 @@ $bg_gradient: linear-gradient(
       justify-content: center;
       margin-top: auto;
       margin-bottom: auto;
-      font-size: 9rem;
+      font-size: clamp(5vw, 9vw, 9vw);
       font-weight: 800;
 
       @include tablet {
@@ -85,33 +85,36 @@ $bg_gradient: linear-gradient(
   .TeamMemberDesktop {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
+    transition: all 0.375s ease-in-out;
+    width: $containerLg;
+    height: 100%;
 
-    height: 50vh;
     > div {
       transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+
     .FounderExpand:nth-of-type(1){
       transform: translateX(0);
     }
     .FounderExpand:nth-of-type(2){
-      transform: translateX(-25vw);
+      transform: translateX(-#{$img}vw);
     }
     .FounderExpand:nth-of-type(3){
-      transform: translateX(-50vw);
+      transform: translateX(-#{$img*2}vw);
     }
 
     .FounderClear {
       opacity: 0;
     }
-    width: 80vw;
 
     .Founder {
       width: 25vw;
       height: 25vw;
-      margin: 12px 0 5px 5px;
       position: relative;
-      padding: 5px;
       border-top-right-radius    : 9999px;
       border-top-left-radius     : 9999px;
       border-bottom-right-radius : 9999px;
@@ -122,8 +125,10 @@ $bg_gradient: linear-gradient(
         overflow: clip;
         display: flex;
         border-radius: 9999px;
+        border: 1px solid red;
         background: $bg_gradient;
       }
+
 
       &_container {
         display: flex;
@@ -334,8 +339,8 @@ $bg_gradient: linear-gradient(
 
       .FounderBG {
         position: relative;
-        width: 80vw;
-        height: 80vw;
+        width: $containerLg;
+        height: $containerLg;
         top: -5rem;
         margin-right: auto;
         margin-left: auto;
@@ -364,8 +369,8 @@ $bg_gradient: linear-gradient(
           );
 
           .TextClip {
-            width: 80vw;
-            height: 80vw;
+            width: $containerLg;
+            height: $containerLg;
             background-clip: text;
             display: flex;
             flex-direction: column;

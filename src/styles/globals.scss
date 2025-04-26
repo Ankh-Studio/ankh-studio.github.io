@@ -9,8 +9,9 @@ $bp-mobile: 480px;
 $bp-s: 768px;
 $bp-desktop: 1024px;
 
-@import "variables";
 @import "./mixins";
+@import "variables";
+@import "components/Navigation.scss";
 @import "components/hero.scss";
 @import "components/WhoAreWe.scss";
 @import "components/Team.scss";

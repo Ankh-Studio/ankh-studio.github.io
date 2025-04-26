@@ -1,17 +1,17 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useThemeContext } from "@/hooks/useThemeContext";
+import StarryBackground from "@/components/StarryBackground";
 
 const eclipseTime = 0.25;
 const Images = {
   Sun               : "url(/images/WhoAreWe/sun.png)",
   Moon              : "url(/images/WhoAreWe/Moon.png)",
   MoonEclipsed      : "url(/images/WhoAreWe/MoonEclipsed.png)",
-  EclipseOne        : "url(/images/WhoAreWe/EclipseOne.png)",
+  Eclipse           : "url(/images/WhoAreWe/Eclipse.png)",
   PyramidEclipsed   : "url(/images/WhoAreWe/PyramidNighttime.png)",
   Pyramid           : "url(/images/WhoAreWe/PyramidDaytime.png)",
   Mountains         : "url(/images/WhoAreWe/MountainsDaytime.png)",
   Sky               : "url(/images/WhoAreWe/SkyDaytime.png)",
-  SkyEclipsed       : "url(/images/WhoAreWe/starry_night.png)",
 };
 
 const AnimationTimes = {
@@ -45,23 +45,9 @@ const WhoAreWe = ({
       AnimationTimes.SkyEclipse,
       [1.0, 0.0],
     );
-    const starRotation = useTransform(
-      scrollYProgress,
-      [0.145, 1.0],
-      [0, 90]
-    );
 
     return (
       <div className={"transitionContainer"}>
-        <motion.div 
-          className={"transition"}
-          style={{
-            backgroundImage: Images.SkyEclipsed,
-            rotate: starRotation,
-            scaleX: "200%",
-            scaleY: "200%",
-          }}
-        ></motion.div>
         <motion.div 
           className={"transition"}
           style={{
@@ -89,7 +75,6 @@ const WhoAreWe = ({
           style={{
             backgroundImage: Images.Mountains,
             filter: nightDayFilter,
-            //opacity,
           }}
         />
       </div>
@@ -200,7 +185,7 @@ const WhoAreWe = ({
         />
         <motion.div className="totalEclipseContainer" 
           style={{
-            backgroundImage: Images.EclipseOne,
+            backgroundImage: Images.Eclipse,
             x: moonX,
             y: arc,
             opacity: totalEclipse,
@@ -326,6 +311,8 @@ const WhoAreWe = ({
         filter: exitBlur,
       }}
     >
+      <div className="WhoAreWe_BG"/>
+      <StarryBackground />
       <Sky       />
       <Pyramid   />
       <Eclipse   />

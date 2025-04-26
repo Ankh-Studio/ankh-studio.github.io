@@ -1,0 +1,104 @@
+
+@mixin Pulsate {
+  animation-delay: 0.5s;
+  animation: pulse 6s ease-in-out infinite alternate;
+}
+
+.Navigation {
+  position: sticky;
+  display: flex;
+  top: 0;
+  flex-direction:  row;
+  justify-content: space-between;  
+  width: 100vw;
+  height: $NavHeight;
+  z-index: 1000;
+
+  .HomeLink {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 4rem;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+    bottom: 0.5rem;
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  
+  .AnkhStudio {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10rem;
+    height: 100%;
+  }
+
+  .Ankh {
+    position: relative;
+    font-size: 2.5rem;
+    font-weight: 600;
+    @include MarX;
+    pointer-events: none;
+    @include Pulsate;
+  }
+  .Studio {
+    position: relative;
+    @include MarX;
+    bottom: 1.25rem;
+    left: 0.35rem;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 0.68rem;
+    pointer-events: none;
+    filter: sepia(0.9) brightness(0.66);
+    @include Pulsate;
+  }
+
+  .StudioBorder {
+    @include MarX;
+    width: 7.2rem;
+    position: relative;
+    bottom: 1.25rem;
+    height: 1px;
+    opacity: 0.4;
+  }
+
+  .NavLinks {
+    position: relative;
+    height: 100%;
+    margin-right: 4rem;
+
+    ul {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .Link {
+      position: relative;
+      height: 100%;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+@include Keyframes(pulse) {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}

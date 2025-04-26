@@ -75,7 +75,6 @@ export const FounderDesktop = ({
         className={cn(
           "Founder_wrap",
         )}
-        { ...containerDisplay }
       >
         <motion.div 
           className={cn(

@@ -96,9 +96,7 @@ const AnkhTeam = () => {
       </Card>
       { bpFilter({
         desktop: (
-          <Card className={
-            "mt-8"
-          }>
+          <Card className={"h-[30vw]"}>
             <div 
               className="TeamMemberDesktop"
             >
