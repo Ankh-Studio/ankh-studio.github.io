@@ -6,6 +6,7 @@ import LandingPage from "@/components/LandingPage";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { DebugUIProvider } from "@/context/DebugUIContext";
 import { BreakpointProvider, Breakpoints } from "@/context/BreakpointContext";
+import HomePage from "@/components/HomePage";
 
 const AnkhStudio: NextPage = () => {
   const breakpoints: Breakpoints = {
@@ -19,7 +20,7 @@ const AnkhStudio: NextPage = () => {
       <BreakpointProvider breakpoints={breakpoints}>
         <DebugUIProvider>
           <DefaultLayout>
-            <LandingPage />
+            <HomePage />
           </DefaultLayout>
         </DebugUIProvider>
       </BreakpointProvider>

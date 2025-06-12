@@ -55,9 +55,9 @@ $bg_gradient: linear-gradient(
     height: 15vh;
     text-align: center;
 
-    @include tablet {
-      height: 10vh;
-    }
+    // @include tablet {
+    //   height: 10vh;
+    // }
 
     .Title {
       width: 100%;
@@ -70,9 +70,9 @@ $bg_gradient: linear-gradient(
       font-size: clamp(5vw, 9vw, 9vw);
       font-weight: 800;
 
-      @include tablet {
-        font-size: 6.8rem;
-      }
+      // @include tablet {
+      //   font-size: 6.8rem;
+      // }
 
       .TitleAlignment {
         display: flex;
@@ -189,25 +189,25 @@ $bg_gradient: linear-gradient(
             }
 
 
-            @include mobile {
-              h1 {
-                font-size: 3rem;
-              }
-            }
-            @include tablet {
-              h1 {
-                line-height: 2.8rem;
-              }
-            }
+            // @include mobile {
+            //   h1 {
+            //     font-size: 3rem;
+            //   }
+            // }
+            // @include tablet {
+            //   h1 {
+            //     line-height: 2.8rem;
+            //   }
+            // }
           }
           .ShowOverlay {
             opacity: 1;
           }
 
-          @include mobile {}
-          @include tablet {
-            opacity: 1;
-          }
+          // @include mobile {}
+          // @include tablet {
+          //   opacity: 1;
+          // }
         }
 
         .FounderInfo {
@@ -233,11 +233,11 @@ $bg_gradient: linear-gradient(
               filter: sepia(0.25);
             }
 
-            @include tablet {
-              h1 {
-                font-size: 2.8rem;
-              }
-            }
+            // @include tablet {
+            //   h1 {
+            //     font-size: 2.8rem;
+            //   }
+            // }
           }
 
           &_description {
@@ -262,18 +262,18 @@ $bg_gradient: linear-gradient(
               filter: sepia(0.55);
             }
 
-            @include tablet {
-              h2 {
-                width: 75%;
-                font-size: 1.0rem;
-                line-height: 1rem;
-                margin-top: 1.5rem;
-              }
-
-              h3 {
-                font-size: 1rem;
-              }
-            }
+            // @include tablet {
+            //   h2 {
+            //     width: 75%;
+            //     font-size: 1.0rem;
+            //     line-height: 1rem;
+            //     margin-top: 1.5rem;
+            //   }
+            //
+            //   h3 {
+            //     font-size: 1rem;
+            //   }
+            // }
 
           }
 
@@ -292,14 +292,14 @@ $bg_gradient: linear-gradient(
               border-radius: 1.5rem;
             }
 
-            @include tablet {
-              height: 5rem;
-
-              h2 {
-                font-size: 0.8rem;
-                padding: 1.0rem 0 0.5rem 2.5rem;
-              }
-            }
+            // @include tablet {
+            //   height: 5rem;
+            //
+            //   h2 {
+            //     font-size: 0.8rem;
+            //     padding: 1.0rem 0 0.5rem 2.5rem;
+            //   }
+            // }
           }
         }
       }

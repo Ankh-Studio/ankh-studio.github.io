@@ -6,7 +6,7 @@ const StarryBackground = ({className}: { className?: string | undefined }) => {
     <div 
       className={className}
       style={{ opacity: 0.5 }}>
-      <div className="starry_bg_animation right-[0vw]">
+      <div className="starry_bg_animation">
         <div className="stars"/>
         <div className="stars3"/>
       </div>

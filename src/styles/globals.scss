@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:list";
 
 @tailwind base;
 @tailwind components;
@@ -15,6 +16,9 @@ $bp-desktop: 1024px;
 @import "components/hero.scss";
 @import "components/WhoAreWe.scss";
 @import "components/Team.scss";
+@import "components/TeamAnkh.scss";
+@import "components/TestTwo.scss";
+@import "components/HomePage.scss";
 @import "components/ANKH.scss";
 @import "components/StarryBackground.scss";
 
@@ -35,7 +39,9 @@ $bp-desktop: 1024px;
   }
 
   html,
-  body {
+  body { 
+    background: black;
+    max-width: 100%;
     scroll-snap-type: y mandatory;
     scrollbar-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -55,6 +61,9 @@ $bp-desktop: 1024px;
       sans-serif;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    container: body / inline-size;
+    background-size: cover;
+    height: 100%;
   }
 
   ul {
@@ -108,4 +117,5 @@ $bp-desktop: 1024px;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
 }

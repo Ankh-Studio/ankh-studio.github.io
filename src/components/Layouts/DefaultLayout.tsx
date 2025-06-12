@@ -17,14 +17,13 @@ const DefaultLayout = ({ children}: DefaultLayoutProps) => {
       style={{
         background: themeColors.Background,
       }}
-      className={twJoin(
-        "absolute top-0 left-0 w-full h-[600vh] z-[-20]",
-      )}
+      className={"HomePage"}
+      //className={twJoin(
+      //  "absolute top-0 left-0 w-[100vw] h-[600vh] z-[-20]",
+      //)}
     >
-      <div className={"h-full w-full"}>
-        <Navigation />
-        { children }
-      </div>
+      <Navigation />
+      { children }
     </div>
     </>
   );

@@ -1,0 +1,489 @@
+@import "./water.scss";
+
+$HeroHeight     : calc(100dvh - $NavHeight);
+$ServicesHeight : 350dvh;
+$FoundersHeight : 200dvh;
+$ContactHeight  : 200dvh;
+$FooterHeight   :  50dvh;
+$TotalHeight : calc($HeroHeight + ServicesHeight + $FoundersHeight + $ContactHeight + $FooterHeight);
+
+$PlanetPos: calc($HeroHeight + $ServicesHeight - 50vw);
+$EarthRotation: 60s;// 600s;
+$CloudRotation: 30s;// 60s;
+
+$StickyTop: calc($NavHeight + 1rem);
+
+$padding_inline     : 200px;
+$page-margin        : 10rem;
+$content_max_width  : 800px;
+$breakout_max_width : 1200px;
+$breakout_size      : calc(($breakout_max_width - $content_max_width)  / 2);
+
+$full_width         : 1fr;
+$full_margin        : 8fr;
+$breakout           : minmax(0, $breakout_size);
+$content            : min(100% - $padding_inline * 2, $content_max_width);
+
+.HomePage {
+  width: 100cqi;
+  height: $TotalHeight;
+  contain: paint;
+  background-iamge: linear-gradient(to bottom, red, purple);
+}
+
+.Sticky {
+  position: sticky;
+  top: $StickyTop;
+}
+
+.window-grid {
+  display: grid;
+  grid-template-columns:
+    [full-width-start] $full_width
+      [page-margin-start] $full-margin
+        [breakout-start] $breakout 
+          [content-start] $content [content-end] 
+        $breakout [breakout-end] 
+      $full-margin [page-margin-end]
+    $full_width [full-width-end];
+}
+.content-grid {
+  grid-template-columns: 
+    [hero-margin-start] $full_margin
+    [hero-content-start] calc($content_max_width + $padding_inline) [hero-content-end]
+    $full_margin [hero-margin-end];
+}
+
+.window-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+  grid-column: content;
+}
+
+.window-grid > .breakout {
+  grid-column: breakout;
+}
+
+.window-grid > .page-margin {
+  grid-column: page-margin;
+}
+
+.window-grid > .full-width {
+  grid-column: full-width;
+
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+// ----------------------------------------------------
+// -- HERO --------------------------------------------
+// ----------------------------------------------------
+.Hero {
+  height: $HeroHeight;
+
+
+  &_container {
+    width: 100vw;
+    height: calc(100vh - $NavHeight);
+    display: grid;
+  }
+
+  &_center {
+    background-image: linear-gradient(
+      to bottom right, 
+      rgba(250,250,250,0.1),
+      rgba(50,100,50,0.1),
+    );
+    @include BoxShadow(
+      $BS_Glass,
+      0px 0px 10px 10px rgba(50,50,50,0.1),
+      1px 1px 20px 20px rgba(50,50,50,0.2),
+    );
+
+    @include RoundedRect(2rem);
+    margin-block: 5vh;
+  }
+
+//   &_center {
+//     background-image: linear-gradient(
+//       to bottom right, 
+//       rgba(250,250,250,0.1),
+//       rgba(50,100,50,0.1),
+//     );
+//     @include BoxShadow(
+//       $BS_Glass,
+//       0px 0px 10px 10px rgba(50,50,50,0.1),
+//       1px 1px 20px 20px rgba(50,50,50,0.2),
+//     );
+//
+//     @include RoundedRect(2rem);
+//     border: 1px solid rgba(200,200,200,0.2);
+//     padding: 0.25rem;
+//     margin-top: $NavHeight;
+//     height: 80vh;
+//     overflow: hidden;
+//     // display: grid;
+//   }
+//
+//   &_left {
+//   }
+//   &_body {
+//     border-radius: calc(2rem - 0.75rem);
+//       width: 100%;
+//       font-size: 4rem;
+//       color: hsl(0 50% 50%);
+//       border: 2px solid white;
+//   }
+//   &_right {
+//   }
+}
+
+
+// ----------------------------------------------------
+// -- SERVICES ----------------------------------------
+// ----------------------------------------------------
+.Services {
+  // opacity: 0;
+  $border-width: 0.25rem;
+  $outer-radius: 2rem;
+  $inner-radius: calc($outer-radius - $border-width);
+
+  height: $ServicesHeight;
+  // margin-inline: 10rem;
+  background-position: 0% 150%;
+  contain: paint;
+
+  &_window {
+    position: relative;
+  }
+  &_background {
+    position: absolute;
+    border-radius: $outer-radius;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    animation: spinGradient 15s cubic-bezier(0.4, 0, 1, 1) infinite;
+    filter: blur(32px);
+    transform: scale(1.01);
+  }
+
+  &_container {
+    z-index: 1;
+    height: 87vh;
+    border-radius: $outer-radius;
+    display: flex;
+    gap: 0.25em;
+    flex-direction: column;
+
+    padding: $border-width;
+    transition: all 500ms ease-in-out;
+
+    padding: 1em solid transparent;
+  }
+  .animate {
+    animation: spinGradient 15s cubic-bezier(0.4, 0, 1, 1) infinite;
+  }
+  
+
+  &_title {
+    border-top-left-radius  : $inner-radius;
+    border-top-right-radius : $inner-radius;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    background: black;
+    text-align: center;
+    height: 12vh;
+    h1 {
+      font-size: 4rem;
+      color: rgba(202,202,202,1);
+    }
+
+    mask: conic-gradient(from -42.5deg at bottom,#0000,#000 1deg 89deg,#0000 85deg) 50%/0.5em 100%
+  }
+
+  &_group {
+    @incude Border;
+    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius  : $inner-radius;
+    border-bottom-right-radius : $inner-radius;
+
+    mask: 
+      conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50%/0.5em 100%,
+    ;
+    background: black;
+    height: 100%;
+    box-shadow: 
+      0px  3px 10px -2px rgba(22, 22, 22, 0.05) inset,
+      0px -5px 20px -3px rgba(22, 22, 22, 0.05) inset,
+      0px  3px 20px -2px rgba(22, 22, 22, 0.05) inset,
+      0px -1px 5px -3px rgba(22, 22, 22, 0.1) inset,
+      0px 0px 75px 0px rgba(222, 222, 222, 0.09) inset,
+      0px 0px 100px 3px rgba(182, 182, 182, 0.05) inset,
+    ;
+  }
+}
+
+
+
+// ----------------------------------------------------
+// -- FOUNDERS ----------------------------------------
+// ----------------------------------------------------
+
+// Used for moving Founders up and over Earth while keeping Sticky parent. 
+$FounderAdjust: 125vh; 
+
+.Founders > .Sticky {
+  position: sticky;
+  top: calc($StickyTop + $FounderAdjust);
+}
+
+.Founders_bg {
+  position: absolute;
+  z-index: -10;
+}
+.Founders {
+  $title_size: 10rem;
+  $title_bg_pad: 0.5rem;
+  $title_outer_rad: 2rem;
+
+  height: $FoundersHeight;
+  translate: 0 -#{$FounderAdjust};
+  // margin-inline: 8rem;
+
+
+  &_container {
+    height: 87vh;
+
+    border-radius: 24px;
+    // border: 1.75em double transparent;
+    background:
+      linear-gradient(transparent 0) padding-box,
+      linear-gradient(to bottom right, transparent, hsl(40 50% 90% / 0.3))
+    ;
+      // linear-gradient(hsl(0 5% 80% / 0.5) 0) padding-box;
+      // linear-gradient(45deg, red, purple) border-box;
+    
+    backdrop-filter: blur(15px);
+    margin-inline: 8rem;
+
+    box-shadow:
+      inset 0.05em 0.05em 0.05em hsl(0 0% 100% /0.2),
+      -0.05em 0.05em 0.5em hsl(0 0% 80% / 0.4)
+    ;
+
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    overflow: hidden;
+  }
+
+}
+
+// ----------------------------------------------------
+// -- CONTACT -----------------------------------------
+// ----------------------------------------------------
+.Contact {
+  width: 100cqi;
+  height: $ContactHeight;
+  @include Debug;
+
+  background: red;
+}
+
+// ----------------------------------------------------
+// -- FOOTER ------------------------------------------
+// ----------------------------------------------------
+.Footer {
+  width: 100cqi;
+  height: $FooterHeight;
+  background: purple;
+}
+
+//----------------------------------------------------
+// PLANET --------------------------------------------
+//----------------------------------------------------
+.Earth {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  top: $PlanetPos;
+  // left: -50vw;
+  height: 100vw;
+  width: 100vw;
+
+  &_video {
+    position: absolute;
+    width: 100vw;
+    bottom: 50vw;
+    left: 0;
+    z-index: -1;
+  }
+
+
+  &_overlay_position {
+    position: absolute;
+    top: 100%;
+    top: calc(100% - 50vw);
+    // border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    // translate: 0 -50vw;
+
+    .Earth_shadow {
+      position      : absolute;
+      width         : 100%;
+      height        : 100%;
+      border-radius : 100%;
+      background    : black;
+      box-shadow    :
+        0 -170px 50px 100px hsl(0 0% 0% / 0.7),
+        0 -120px 200px 100px hsl(0 0% 0% / 1),
+        0px -50px 50px 20px hsl(0 0% 0%),
+        inset 0px 300px 50px 20px hsl(0 0% 0%)
+      ;
+
+      translate: -5% -2%;
+
+      transform: scaleX(1.0) scaleY(0.6);
+      @media (min-width: 768px) {
+        transform: scaleX(1.2) scaleY(0.8);
+      }
+      @media (min-width: 1024px) {
+        transform: scaleX(1.2) scaleY(0.9);
+      }
+      @media (min-width: 1440px) {
+        transform: scaleX(1.2) scaleY(1.05);
+      }
+
+      @media (min-width: 2500px) {
+        transform: scaleX(1.2) scaleY(1.215);
+      }
+    }
+    .Earth_atmosphere {
+      position      : absolute;
+      width         : 100%;
+      height        : 100%;
+      border-radius : 100%;
+      transform: scaleX(1.04);
+
+      width: 100%;
+      height: 100%;
+      bottom: 33.33%;
+      box-shadow: 
+        inset 0 25px 50px 20px hsl(247deg 99% 18% / 0.2),
+        inset 0  2px 50px 50px hsl(0deg 0% 80% / 0.3),
+        0 5px 50px 50px hsl(200deg 100% 89% / 0.32),
+        20px   0px 120px 20px hsl(0deg    0% 100% / 0.9),
+        20px -40px 120px 20px hsl(220deg 54%  18% / 0.7),
+        20px -90px 120px 10px hsl(222deg 54%  50% / 0.3),
+        20px -120px 80px 10px hsl(200deg 100% 90% / 0.1)
+      ;
+    }
+
+
+    .Sol {
+      $arc_frac: 0.9fr;
+      $sol_size: 8vw; // 276.48px @ 3456 x 2234
+        mix-blend-mode: screen;
+
+      position        : absolute;
+      width           : 100%;
+      height          : 75%;
+      translate       : 0 -100%;
+      display: grid;
+      grid-template-rows: calc(1fr - $arc_frac) $arc_frac;
+
+      &_alignment {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      &_solana,
+      &_arc {
+        width: 50vw;
+        display: flex;
+        justify-content: end;
+        background: transparent;
+      }
+
+      &_solana {
+        padding: $sol_size $sol_size;
+
+        .Sun{
+          width   : $sol_size;
+          height  : $sol_size;
+          // background: white;
+          background: 
+            hsl(36deg 100% 74.3%)
+          ;
+          border-radius: 100%;
+          box-shadow:
+            0 0  4vw hsl(36deg 100% 74.3%),
+            0 0 10vw hsl(23deg 100%  51% / 0.5),
+            0 0 10vw hsl( 0deg   0% 100% / 0.5),
+            0 0  1vw hsl(36deg 100% 94.3%),
+            0 0  2vw 1vw white
+          ;
+
+          &_flare {
+            z-index: 10;
+            height: 68vw;
+            position: absolute;
+            width: 6vw;
+            overflow: hidden;
+            translate: -1vw -30vw;
+            filter: blur(10px);
+          }
+
+          &_beam {
+            z-index: 11;
+            position: absolute;
+            border-radius: 100%;
+            width  : 6vw;
+            height : 6vw;
+            box-shadow: 
+              0vw 30vw 20vw 7vw hsl(36deg 100% 74.3% / 0.1),
+              0vw 30vw 20vw 5vw hsl(0deg 0% 100% / 0.23)
+            ;
+            opacity: 0.5;
+          }
+        }
+      }
+      &_arc {
+        .Arc {
+          margin-right: 5vw;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          background-image: url(/images/earth_flare.jpg);
+          background-size: 55%;
+          background-repeat: no-repeat;
+          background-position: 100% 0%;
+          transform: translate3d(0,0,0); // Fixes Safari bug..
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+  .Arc_screen 
+  {
+    mix-blend-mode: screen !important;
+  }
+}
+
+@keyframes spinGradient {
+  @for $i from 0 through 360 {
+    #{$i * 100% / 360} {
+      background-image: linear-gradient(#{$i}deg, #00FF80A9, #A32D94A9);
+        
+    }
+  }
+}
+@keyframes spinShadow {
+  0%   { box-shadow: 10px 0   20px rgba(255, 0, 0, 0.6); }
+  25%  { box-shadow: 0   10px 20px rgba(0, 255, 0, 0.6); }
+  50%  { box-shadow: -10px 0  20px rgba(0, 0, 255, 0.6); }
+  75%  { box-shadow: 0  -10px 20px rgba(255, 255, 0, 0.6); }
+  100% { box-shadow: 10px 0   20px rgba(255, 0, 0, 0.6); }
+}

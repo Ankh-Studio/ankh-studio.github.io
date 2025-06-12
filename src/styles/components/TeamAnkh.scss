@@ -1,0 +1,548 @@
+@mixin RadialBackground {
+  background: radial-gradient(
+    rgba(14, 20, 22, 0.5),
+    rgba(0,0,0,1),
+  );
+}
+
+
+@mixin BoxShadow($shadows...){
+  $params: join((), $shadows, comma);
+
+  -webkit-box-shadow : $params;
+  -moz-box-shadow    : $params;
+  box-shadow         : $params;
+}
+
+@mixin Background($from: rgba(20,20,20,0.2), $to: rgba(10,10,10,0.6)) {
+  background-image: linear-gradient(to bottom right, $from, $to);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+@mixin CardShadow {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+
+@mixin Border() {
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+@mixin FounderTextOverlay {
+  background-clip: text;
+  color: transparent;
+  text-shadow: 
+    -1px -1px 0 rgba(175,175,175,0.05), 
+     1px -1px 0 rgba(175,175,175,0.05), 
+    -1px  1px 0 rgba(175,175,175,0.05),
+     1px  1px 0 rgba(175,175,175,0.05);
+}
+
+.Blurred {
+  position: absolute;
+  border-radius: 9999px;
+  background-image: radial-gradient(
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0.3) 13%,
+    rgba(255,255, 255,0.1)
+  );
+  width: 66vw;
+  height: 66vw;
+  transform: translateX(18vw) translateY(-5vw) scale(1.25);
+  filter: blur(90px) drop-shadow(16px 16px 20px rgba(255,0,0,0.1)) invert(75%);
+  opacity: 0.3;
+}
+
+.FounderImage {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.FounderOverlay {
+  background-clip: text;
+  color: transparent;
+  text-shadow: 
+    -1px -1px 0 rgba(175,175,175,0.05), 
+     1px -1px 0 rgba(175,175,175,0.05), 
+    -1px  1px 0 rgba(175,175,175,0.05),
+     1px  1px 0 rgba(175,175,175,0.05);
+}
+
+.TeamWindow {
+  @include MarX;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .TeamAnkh {
+    @include Background;
+    @include BoxShadow($BS_Glass);
+    position: relative;
+    margin-top: 2rem;
+    width: 96vw;
+    height: 96%;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+
+    &_body {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      width: 100%;
+    }
+
+    &_title {
+      @include MarX;
+      @include Background;
+      @include BoxShadow($BS_Glass);
+      overflow: clip;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 1rem;
+      width: 75%;
+      height: clamp(5rem, 6vw, 20rem);
+      margin-top  : clamp(1.0rem, 1vw, 2rem);
+
+      @include Laptop {
+        width: 60%;
+        height: 8rem;
+      }
+      @include Desktop {
+        width: 60%;
+      }
+      @include DesktopLG {
+        width: 50%;
+      }
+    }
+
+    &_meet {
+      text-align: center;
+      color: white;
+      font-weight: 700;
+      letter-spacing: -2px;
+      font-size: 2rem;
+
+      @include MobileSM {
+        font-size: clamp(1.5rem, 15vw, 15rem);
+      }
+      @include Tablet {
+        font-size: clamp(1.5rem, 5vw, 5rem);
+      }
+    }
+
+    &_founders {
+      @include MarX;
+      @include RoundedRect(2rem);
+      display: grid;
+      gap: 1rem;
+      width: 92vw;
+      height: 90vh;
+      margin-top: 2rem;
+      opacity: 1;
+      filter: blur(0px);
+      transition: 
+        filter    $Timing ease-in, 
+        transform $Timing ease-in,
+        opacity   $Timing ease-in;
+
+      @include Laptop {
+        @include Background;
+        @include BoxShadow($BS_Glass);
+        @include RoundedRect;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 29vw;
+      }
+
+      .Founder {
+        @include Laptop {
+          @include MarY(clamp(1rem, 2vw, 4rem));
+          border-radius: 9999px;
+          justify-content: start;
+        }
+
+        &_component {
+          @include RoundedRect(2rem);
+          @include BoxShadow(
+            $BS_Glass,
+            1px 1px 10px 10px rgba(200,200,200,0.05),
+            -5px -5px 20px 2px rgba(200,200,200,0.1)
+          );
+          position: relative;
+          height: 22vw;
+          height: 100%;
+          cursor: pointer;
+          z-index: 10;
+          display: flex;
+          justify-content: center;
+          overflow: clip;
+
+          @include Laptop {
+            @include RoundedRect;
+            box-shadow: 
+              1px 1px 10px 10px rgba(200,200,200,0.05),
+              -5px -5px 20px 2px rgba(200,200,200,0.1);
+          }
+
+          .Anubis {
+            top: -8rem;
+          }
+          .Khonsu {
+            top: -4rem;
+          }
+          .Osiris {
+            top: -5rem;
+          }
+          @include Laptop {
+            width  : 25vw;
+            height : 25vw;
+            .Anubis,
+            .Khonsu,
+            .Osiris {
+              top: 0;
+            }
+          }
+        }//&_image
+      }// .Founder
+    }// &_founders
+
+    .Selected {
+      position: absolute;
+      top: 16%;
+      left: 3%;
+      opacity: 0.8;
+      filter: blur(90px);
+      transform: scale(1.2);
+      pointer-events: none;
+    }
+
+// ----------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------
+    // Selected Founder:
+
+    // .ShowingOverlay {
+    //   opacity: 0;
+    //
+    //   @include Laptop {
+    //     transform: scale(1.15);
+    //   }
+    // }
+  }//.TeamAnkh
+}//,TeamWindow
+
+.TeamWindow {
+  .TeamAnkh {
+    .SelectedPosition {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      position: absolute;
+      top: 22%;
+      height: 25vw;
+      filter: blur(20px);
+      opacity: 0;
+      transition: 
+        filter    0.575s linear 0.125s,
+        transform 0.275s linear 0.125s;
+
+      .SelectedFounder {
+        @include MarX;
+        display: flex;
+        z-index: -10;
+        transform: translateX(-12vw);
+        @include Laptop {
+          @include MarX;
+        }
+
+        &_component {
+          @include RoundedRect;
+          // position: absolute;
+          width: 25vw;
+          height: 25vw;
+          transform: translateX(25vw);
+
+          cursor: pointer;
+          z-index: 10;
+          overflow: clip;
+          transition: filter $Timing ease-in-out;
+          opacity: 1;
+          transition: filter $Transition;
+          background: black;
+        }
+      }//.SelectedFounder
+    }//.SelectedPosition
+
+    .FounderContainer {
+      @include Background;
+      @include BoxShadow(
+        10px 0px 10px 2px rgba(200,200,200,0.07), 
+        25px 0px 20px 2px rgba(200,200,200,0.05),
+        $BS_Glass,
+      );
+      @include RoundedRect(2rem);
+      position: relative;
+      top: 0.4vw;
+      padding-left: 26vw;
+      transition: 
+      filter $Timing ease-in;
+      overflow: clip;
+      height: 50vw;
+      width: 50vw;
+
+      @include Laptop {
+        @include RoundedRect;
+        height: 24.2vw;
+      }
+
+      &_flex {
+        display: flex;
+        opacity: 0;
+        flex-direction: column;
+        justify-content: start;
+        gap: 1.5rem;
+        height: 100%;
+        transition: opacity calc($Timing / 2) ease-in $Timing;
+      }
+
+      &_title h1,
+      &_body h2,
+      &_footer h3
+      {
+        margin-left: clamp(1.0rem, 1vw, 2rem);
+        width: 100%;
+      }
+
+      &_title {
+        @include BoxShadow($BS_Glass);
+        border-bottom-left-radius: clamp(0.5rem, 1vw, 1.5rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 10vw;
+
+        h1 {
+          font-weight: 600;
+          font-size: clamp(1rem, 2vw, 8.5rem);
+        }
+
+        @include Laptop {
+          height: 5vw;
+        }
+      }
+
+      &_body {
+        @include BoxShadow($BS_Glass);
+        display: flex;
+        justify-content: space-between;
+        height: 15vw;
+        border-top-left-radius: clamp(0.5rem, 1vw, 1.5rem);
+        border-bottom-left-radius: clamp(0.5rem, 1vw, 1.5rem);
+
+        h2:nth-of-type(1) {
+          width: 66%;
+          font-size   : clamp(0.5rem, 1vw, 1.5rem);
+          line-height : clamp(0.5rem, 1vw, 2rem);
+          margin-top  : clamp(1.0rem, 1vw, 2rem);
+        }
+        h2:nth-of-type(2) {
+          width          : clamp(70%, 1vw, 50%);
+          line-height    : clamp(0.25rem, 1vw, 1.5rem);
+          font-size      : clamp(0.5rem, 1vw, 1.25rem);
+          margin-bottom  : clamp(1.0rem, 1vw, 2rem);
+          padding-left   : clamp(0.5rem, 1vw, 1rem);
+          filter: sepia(0.2) brightness(0.7);
+        }
+
+        @include Laptop {
+          height: 25vw;
+        }
+      }
+
+      &_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: clamp(0.5rem, 1vw, 1.5rem);
+      }
+
+      &_tech {
+        width: 60vw;
+        left: 4rem;
+      }
+
+      &_footer {
+        @include BoxShadow($BS_Glass);
+        border-top-left-radius: clamp(0.5rem, 1vw, 1.5rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 3vw;
+
+        h3 {
+          filter: sepia(0.5) brightness(0.7);
+          font-size   : clamp(0.5rem, 0.75vw, 1.0rem);
+          padding-left : clamp(0.5rem, 1vw, 1rem);
+        }
+      }
+    }//.FounderContainer
+    .ExpandContainer:has(.FounderContainer_flex) {
+      width: 76vw;
+
+      @include Laptop {
+        width: 73vw;
+      }
+    }
+    .ExpandContainer:has(.FounderContainer_title) {
+      opacity: 1;
+    }
+    .ShowingFounder {
+      position: relative;
+      top: 5%;
+      opacity: 1;
+      z-index: 10;
+      filter: blur(0px);
+      transform: scale(1.2);
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------
+
+.Founder_image_src,
+.Founder_image_overlay {
+  @include RoundedRect;
+  position: absolute;
+  width: 75%;
+  height: 75vw;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.Founder_image_src {
+  @include MarX;
+  filter: brightness(0.7) blur(10px);
+  transition: filter $Transition;
+  z-index: -8;
+  opacity: 1;
+
+  @include Laptop {
+    filter: brightness(0.8);
+    width: 25vw;
+    height: 25vw;
+  }
+}
+
+.Founder_image_overlay {
+  @include FounderTextOverlay;
+  opacity: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  .FullName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+
+    .First,
+    .Last {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      height: 30%;
+
+      h1 {
+        font-size: clamp(2rem, 15vw, 15rem);
+        font-weight: 900;
+      }
+    }
+  }
+
+  @include Laptop {
+    position: relative;
+    transition: opacity $Transition;
+    width: 25vw;
+    height: 25vw;
+    justify-content: center;
+
+    .FullName {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .First,
+      .Last {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 30%;
+
+        h1 {
+          font-size: clamp(2rem, 5vw, 6rem);
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+.Founder_component {
+  .Founder_image_overlay {
+    @include Laptop {
+      width  : 25vw;
+      height : 25vw;
+      .Anubis,
+      .Khonsu,
+      .Osiris {
+        top: 0;
+      }
+    }
+  }
+  .Founder_image_src {
+
+  }
+  .Darken {
+    filter: brightness(0.8) blur(15px);
+  }
+}
+
+.SelectedFounder_component {
+  .Founder_image_src {}
+  .Founder_image_overlay {
+
+    @include Laptop {
+      opacity: 1;
+    }
+  }
+  .Darken {
+    filter: brightness(0.7) blur(6px);
+  }
+}
+
+.SectionWrapper {
+  position: relative;
+  width: 100vw;
+  z-index: 50;
+    height: 25vh;
+
+  .Section {
+    position: sticky;
+    top: $NavHeight;
+    width: 100vw;
+
+    .Content {
+      position: relative;
+      width: 100vw;
+      height: $WinHeight;
+      overflow: clip;
+    }
+  }
+}

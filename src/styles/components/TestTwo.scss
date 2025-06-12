@@ -1,0 +1,415 @@
+
+$Anubis: url("/images/anubis.png");
+$Khonsu: url("/images/khonsu.png");
+$Osiris: url("/images/osiris.png");
+
+@mixin GODS {
+  .Anubis,
+  .Khonsu,
+  .Osiris {
+    @content
+  }
+}
+
+@mixin FounderFilter(
+  $brightness: 0.75,
+  $sepia: 0.5,
+  $blur: 8px,
+  $grayscale: 0,
+){
+  $filters: ();
+  $filters: append($filters, brightness($brightness));
+  $filters: append($filters, sepia($sepia));
+  $filters: append($filters, blur($blur));
+  $filters: append($filters, grayscale($grayscale));
+
+  backdrop-filter: #{$filters};
+}
+
+@mixin FounderImage {
+  background-repeat: no-repeat;
+  background-position: 50% 35%;
+  background-size: 170%;
+}
+
+$trans: 500ms ease-in;
+$BodyPad: 1.00rem;
+$OuterRadius: 2rem;
+$InnerRadius: calc($OuterRadius - $BodyPad);
+
+
+.TA_Blurred {
+  position: absolute;
+  @include RoundedRect;
+  background-image: radial-gradient(
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0.3) 13%,
+    rgba(255,255, 255,0.1)
+  );
+  width: 66vw;
+  height: 66vw;
+  transform: translateX(18vw) translateY(50vw) scale(2.25);
+  filter: blur(90px) drop-shadow(16px 16px 20px rgba(255,0,0,0.1)) invert(75%);
+  opacity: 0.3;
+}
+
+.TeamAnkh {
+  position: relative;
+  width: 100vw;
+  height: 75vh;
+  width: 100dvw;
+  height: 75dvh;
+
+  &_window {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+  }
+
+  &_title {
+    @include Background;
+    @include BoxShadow($BS_Glass);
+    @include MarX;
+    @include PadX(1.25rem);
+    @include PadY(0.75rem);
+    margin-top: 1.25rem;
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 1rem;
+
+    h1 {
+      text-align: center;
+      color: rgba(222,222,222,0.8);
+      font-weight: 700;
+      font-size: 2rem;
+    }
+  }
+
+  &_founders {
+    container: founders / inline-size;
+    @include MarX;
+    @include PadY(1.25rem);
+    @include PadX(2.25rem);
+    @include Background;
+    @include BoxShadow($BS_Glass);
+    @include RoundedRect($OuterRadius);
+    display: grid;
+    grid-template-areas: 
+      "Selected"
+      "anubis"
+      "khonsu"
+      "osiris";
+    width: 100vw;
+    width: 90dvw;
+    height: 80vh;
+    margin-top: 1.5rem;
+    margin-bottom: calc($NavHeight + 1.25rem);
+    overflow: clip;
+  }
+}
+
+.Anubis {
+  background-image: $Anubis;
+}
+.Khonsu {
+  background-image: $Khonsu;
+}
+.Osiris {
+  background-image: $Osiris;
+}
+
+.Founder {
+  @include BoxShadow(
+    $BS_Glass,
+    1px 1px 10px 10px rgba(200,200,200,0.05),
+    -5px -5px 20px 2px rgba(200,200,200,0.1)
+  );
+  @include RoundedRect($InnerRadius);
+  @include FounderImage;
+  padding: 6px;
+  margin: 1.5rem;
+  display: flex;
+  visibility: visible;
+  justify-content: start;
+  overflow: clip;
+
+  transition:
+    transform $trans,
+    visibility 500s linear 500ms,
+    height 500s linear 500ms,
+    background-size 1000ms ease-out 500ms,
+    filter $trans;
+
+  &_overlay {
+    @include BoxShadow($BS_Glass);
+    container: overlay / inline-size;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-align: center;
+    @include FounderFilter($brightness: 0.35, $blur: 4px);
+    @include RoundedRect(calc($InnerRadius - 6px));
+    overflow: hidden;
+    transition: 
+      height $trans,
+      backdrop-filter $trans;
+
+    @include min-height(844px){
+      height: 23vh;
+    }
+  }
+
+  &_overlay:hover {
+    @include FounderFilter;
+  }
+
+  &_name {
+    opacity: 1.0;
+    @include FounderImage;
+    @include FounderTextOverlay;
+    display: flex;
+    width: 100%;
+    transition: 
+      background-size 175ms linear 325ms,
+      background-position 175ms linear 325ms,
+      margin-top 500ms ease-in-out,
+      opacity $trans;
+
+    &_position {
+      @include Background;
+      @include BoxShadow(
+        $BS_Glass,
+        1px 1px 10px 10px rgba(200,200,200,0.05),
+        -5px -5px 20px 2px rgba(200,200,200,0.1)
+      );
+      @include MarX($BodyPad);
+      @include RoundedRect();
+      border: 2px solid rgba(222,222,222,0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include MarX;
+      width  : 275px;
+      height : 275px;
+
+    }
+
+    h1 {
+      font-size       : 3rem;
+      font-weight     : 900;
+      line-height     : 3rem;
+      padding-top     : 1.50rem;
+      padding-bottom  : 1.75rem;
+
+      @include min-width(375px){
+        font-size: clamp(3.5rem, 5vw, 4.5rem);
+      }
+    }
+    h1.Anubis {
+      -webkit-text-stroke: 1px rgba(255,223,39,0.15);
+    }
+    h1.Khonsu {
+      -webkit-text-stroke: 1px rgba(2,2,200,0.3);
+    }
+    h1.Osiris {
+      -webkit-text-stroke: 1px rgba(2,200,2,0.3);
+    }
+  }
+
+  &_body {
+    container: body / inline-size;
+    grid-area: "body";
+    overflow: hidden;
+    height: 100%;
+    transition: 
+      height 750ms ease-out 250ms,
+      transform 750ms ease-out 250ms;
+    ;
+  }
+
+  &_body &_pillar {
+    @include Background;
+    @include BoxShadow(
+      $BS_Glass,
+      1px 1px 10px 10px rgba(200,200,200,0.05),
+      -5px -5px 20px 2px rgba(200,200,200,0.1)
+    );
+    @include MarX(0.75rem);
+    @include RoundedRect($InnerRadius);
+    color: white;
+    margin-top: 2rem;
+    opacity: 0;
+    transition: 
+      opacity 500ms ease-in-out 250ms;
+  }
+}
+
+
+// ----- Founder Positioning:
+.Founder:has(.Anubis) {
+  grid-area: anubis;
+}
+.Founder:has(.Khonsu) {
+  grid-area: khonsu
+}
+.Founder:has(.Osiris) {
+  grid-area: osiris;
+}
+.Founder.Selected:has(.Anubis),
+.Founder.Selected:has(.Khonsu),
+.Founder.Selected:has(.Osiris),
+{
+  // grid-area: Selected;
+}
+
+
+// ----------------------------------------------------------------------------------------
+// ---------------------------------- Selected Founder ------------------------------------
+.Founder {
+  &.Selected {
+    background-size: 225%;
+    background-position: 50% 50%;
+    z-index: 5;
+
+  }
+  &.Hide {
+    filter: blur(10px);
+  }
+}
+.Founder.Selected:has(.Khonsu){
+  transform: translateY(-23vh);
+}
+.Founder.Selected:has(.Osiris){
+  transform: translateY(-37cqi);
+}
+
+.Founder_overlay.Selected {
+  @include FounderFilter(
+    $blur: 8px,
+    $grayscale: 0.5
+  );
+
+  height: 65vh;
+  @include min-height(844px){
+    height: 73vh;
+  }
+}
+.Founder_name.Selected {
+  background-position: 50% 17.5%;
+  transform: translateY(0vh);
+  margin-top: 0.75rem;
+}
+
+.Founder_body.Selected {
+  position: relative;
+  display: flex;
+  transform: translateY(-10vh);
+
+  .Founder_pillar {
+    visibility: visible;
+    padding: 0.75rem;
+    color: white;
+    opacity: 1;
+  }
+}
+
+@media (width >= 445px){
+  .Founder.Selected,
+  .Founder_name.Selected {
+    background-size: 170%;
+  }
+  .Founder_name.Selected {
+    background-position: 50% -8vh;
+    text-align: center;
+
+    h1 {
+      @include Border;
+      width: 50vw;
+    }
+  }
+}
+// @container overlay (width >= 1024px){
+// @container overlay (425px <= width < 1024px){
+@media (min-width: 445px) {
+  .Founder_name {
+    transform: translateY(-12vh);
+
+    &.Selected {
+      transform: translateY(-12vh);
+    }
+  }
+  .Founder_name_position {
+    width  : 475px;
+    height : 475px;
+
+    h1 {
+      font-size: clamp(4.0rem, 12vw, 10.0rem);
+      line-height: 4rem;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .Founder_name {
+    transform: translateY(-12vh);
+
+    &.Selected {
+      transform: translateY(-12vh);
+    }
+  }
+  .Founder_name_position {
+    width: 600px;
+    height: 600px;
+
+    h1 {
+    }
+  }
+}
+
+@container body (min-width: 30ch) {
+  .Founder_pillar p {
+    @include BoxShadow(
+      $BS_Glass,
+    );
+    border: 2px solid rgba(222,222,222,0.3);
+    border-radius: 12px;
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+    padding: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+.SectionWrapper {
+  position: relative;
+  width: 100vw;
+  z-index: 50;
+  height: 25vh;
+
+  .Section {
+    position: sticky;
+    top: $NavHeight;
+    width: 100vw;
+
+    .Content {
+      position: relative;
+      width: 100vw;
+      height: $WinHeight;
+      overflow: clip;
+    }
+  }
+}

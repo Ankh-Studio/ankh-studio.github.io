@@ -19,6 +19,13 @@
   #{$property}: clamp(#{$min}, #{$preferred}, #{$max});
 }
 
+@mixin RoundedRect($radius: 9999px) {
+  border-top-left-radius     : $radius;
+  border-top-right-radius    : $radius;
+  border-bottom-right-radius : $radius;
+  border-bottom-left-radius  : $radius;
+};
+
 @mixin PadX($value: auto) {
   padding-left  : $value;
   padding-right : $value;
@@ -37,19 +44,6 @@
   margin-bottom : $value;
 };
 
-@mixin Animation($input) {
-  -webkit-animation : $input;
-  -moz-animation    : $input;
-  -ms-animation     : $input;
-  animation         : $input;
-}
-@mixin Transform($input){
-  -webkit-transform : $input;
-  -moztransform     : $input;
-  -ms-transform     : $input;
-  transform         : $input;
-}
-
 @mixin Keyframes($name) {
   @keyframes #{$name} {
     @content;
@@ -65,48 +59,80 @@
   }
 }
 
-@mixin mobile {
-  @media (max-width: 738px) {
-    @content;
+@mixin Animation($input) {
+  -webkit-animation : $input;
+  -moz-animation    : $input;
+  -ms-animation     : $input;
+  animation         : $input;
+}
+@mixin Transform($input){
+  -webkit-transform : $input;
+  -moztransform     : $input;
+  -ms-transform     : $input;
+  transform         : $input;
+}
+
+
+@mixin min-width($min) {
+  @media (min-width: $min){
+    @content
   }
 }
-@mixin tablet {
-  @media (max-width: 1024px) {
-    @content;
+@mixin min-height($min) {
+  @media (min-height: $min){
+    @content
   }
 }
-@mixin desktop {
-  @media (min-width: 1025px) {
-    @content;
+@mixin max-width($max) {
+  @media (max-width: $max){
+    @content
+  }
+}
+@mixin max-height($max) {
+  @media (max-height: $max){
+    @content
   }
 }
 
-@mixin min-height($hmin) {
-  @media (min-height: $hmin){
-    @content;
+// 320px
+@mixin MobileXS($min: $breakpoint-xs) {
+  @media (min-width: $min){
+    @content
+  }
+}
+// 640px
+@mixin MobileSM($min: $breakpoint-sm) {
+  @media (min-width: $min){
+    @content
+  }
+}
+// 768px
+@mixin Tablet($min: $breakpoint-md) {
+  @media (min-width: $min){
+    @content
+  }
+}
+// 1024px
+@mixin Laptop($min: $breakpoint-lg) {
+  @media (min-width: $min){
+    @content
+  }
+}
+// 1280px
+@mixin Desktop($min: $breakpoint-xl) {
+  @media (min-width: $min){
+    @content
+  }
+}
+// 1536px
+@mixin DesktopLG($min: $breakpoint-2xl) {
+  @media (min-width: $min){
+    @content
   }
 }
 
-@mixin max-height($hmax) {
-  @media (max-height: $hmax){
-    @content;
-  }
-}
-
-@mixin min-width($wmin) {
-  @media (min-widht: $wmin){
-    @content;
-  }
-}
-
-@mixin max-width($wmax) {
-  @media (max-widht: $wmax){
-    @content;
-  }
-}
-
-@mixin Debug(){
-  background: rgba(200,0,0,0.3);
+@mixin Debug($color: rgba(200,0,0,0.3)){
+  background: $color;
 }
 
 @function rem($pixels){
