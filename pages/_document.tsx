@@ -1,16 +1,8 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import {
-  lexand,
-  radio_canada,
-  inter,
-} from "./fonts";
 
 export default function Document() {
   return (
-    <Html 
-      lang="en"
-      className={inter.className}
-    >
+    <Html lang="en">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
@@ -23,3 +15,4 @@ export default function Document() {
     </Html>
   );
 }
+
