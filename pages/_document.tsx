@@ -3,7 +3,7 @@ import {
   lexand,
   radio_canada,
   inter,
-} from "@/fonts";
+} from "fonts";
 
 export default function Document() {
   return (
