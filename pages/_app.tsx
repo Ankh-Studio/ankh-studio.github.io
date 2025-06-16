@@ -9,6 +9,3 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </main>  
   );  
 }  
-
-
-export default MyApp;
