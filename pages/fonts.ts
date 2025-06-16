@@ -1,30 +1,23 @@
-// fonts.ts
-import { Inter, Radio_Canada } from 'next/font/google';
-import localFont from 'next/font/local';
+import { Inter, Lexend, Radio_Canada } from 'next/font/google';
 
+// Configure the Inter font from Google Fonts
 export const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-inter',
 });
 
+// Configure the Lexend font from Google Fonts
+export const lexend = Lexend({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-lexend',
+});
+
+// Configure the Radio Canada font from Google Fonts
 export const radio_canada = Radio_Canada({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-radio-canada',
 });
 
-// Assuming Lexand is a local font file
-export const lexand = localFont({
-  src: [
-    {
-      path: './public/fonts/lexand-regular.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './public/fonts/lexand-bold.woff2', 
-      weight: '700',
-      style: 'normal',
-    },
-  ],
-  display: 'swap',
-});
