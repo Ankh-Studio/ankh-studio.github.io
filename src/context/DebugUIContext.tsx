@@ -1,4 +1,3 @@
-import DebugUIWindow from "@/components/DebugUI";
 import React, { createContext, useEffect, useRef, useState } from "react";
 
 interface DebugUIContext {
