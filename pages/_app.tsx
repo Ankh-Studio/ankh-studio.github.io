@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';  
-import { inter, lexend, radio_canada } from '../lib/fonts'; 
+import { inter, lexend, radio_canada } from '@/lib/fonts'; 
 import '@/styles/globals.css'; 
 
 export default function MyApp({ Component, pageProps }: AppProps) {  
