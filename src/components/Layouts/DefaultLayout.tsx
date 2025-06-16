@@ -1,30 +1,24 @@
-import React from "react";
-import { useThemeContext } from "@/hooks/useThemeContext";
-import { twJoin } from "tailwind-merge";
-import Navigation from "../Navigation";
-
+import React, { ReactNode } from 'react';
+import Head from 'next/head';
 
 interface DefaultLayoutProps {
-  children : any,
-};
+  children: ReactNode;
+}
 
-const DefaultLayout = ({ children}: DefaultLayoutProps) => {
-  const { themeColors } = useThemeContext();
-
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   return (
     <>
-    <div 
-      style={{
-        background: themeColors.Background,
-      }}
-      className={"HomePage"}
-      //className={twJoin(
-      //  "absolute top-0 left-0 w-[100vw] h-[600vh] z-[-20]",
-      //)}
-    >
-      <Navigation />
-      { children }
-    </div>
+      <Head>
+        <title>Ankh Studio</title>
+        <meta name="description" content="Creating innovative digital experiences" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content="Ankh Studio" />
+        <meta property="og:description" content="Creating innovative digital experiences" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ankh-studio.github.io/" />
+      </Head>
+      {children}
     </>
   );
 };
