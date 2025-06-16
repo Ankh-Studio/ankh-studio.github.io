@@ -2,7 +2,7 @@
 import type { NextPage } from "next";
 import React from "react";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import LandingPage from "@/components/LandingPage";
+// import LandingPage from "@/components/LandingPage";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { DebugUIProvider } from "@/context/DebugUIContext";
 import { BreakpointProvider, Breakpoints } from "@/context/BreakpointContext";
