@@ -98,7 +98,7 @@ const HomePage = () => {
       <PlanetEarth />
 
       <ReactLenis root options={{
-        autoRef: false,
+        autoRaf: false,
         ...lenisOptions
       }} ref={lenisRef}>
 
