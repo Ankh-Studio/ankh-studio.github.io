@@ -9,7 +9,7 @@ import { AnkhHero } from "./ankhHero";
 import { AnkhServices } from "./ankhServices";
 import { AnkhFounders } from "./ankhFounders";
 import { AnkhContact } from "./ankhContact";
-import { AnkhFooter } from "./AnkhFooter";
+import { AnkhFooter } from "./ankhFooter";
 
 
 const HomePage = () => {
