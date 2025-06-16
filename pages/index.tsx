@@ -1,12 +1,12 @@
 // pages/index.tsx
 import type { NextPage } from "next";
 import React from "react";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
-// import LandingPage from "@/components/LandingPage";
-import { ThemeProvider } from "@/context/ThemeContext";
-import { DebugUIProvider } from "@/context/DebugUIContext";
-import { BreakpointProvider, Breakpoints } from "@/context/BreakpointContext";
-import HomePage from "@/components/HomePage";
+import DefaultLayout from "../src/components/Layouts/DefaultLayout";
+// import LandingPage from "../src/components/LandingPage";
+import { ThemeProvider } from "../src/context/ThemeContext";
+import { DebugUIProvider } from "../src/context/DebugUIContext";
+import { BreakpointProvider, Breakpoints } from "../src/context/BreakpointContext";
+import HomePage from "../src/components/HomePage";
 
 const AnkhStudio: NextPage = () => {
   const breakpoints: Breakpoints = {
