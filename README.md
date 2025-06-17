@@ -43,3 +43,18 @@ yarn build
 - TypeScript
 - Tailwind CSS
 - Framer Motion
+
+## Deployment to GitHub Pages
+
+1. Build the static site. When deploying to a project page specify the base path:
+
+```bash
+# user or org site
+npm run build
+
+# project site
+NEXT_PUBLIC_BASE_PATH=/your-repo-name npm run build
+```
+
+2. Commit the `out/` folder or rely on the GitHub Actions workflow in
+`.github/workflows/deploy.yaml` to publish automatically.

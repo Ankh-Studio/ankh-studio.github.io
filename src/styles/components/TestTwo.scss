@@ -1,7 +1,7 @@
 
-$Anubis: url("/images/anubis.png");
-$Khonsu: url("/images/khonsu.png");
-$Osiris: url("/images/osiris.png");
+$Anubis: url("../images/anubis.png");
+$Khonsu: url("../images/khonsu.png");
+$Osiris: url("../images/osiris.png");
 
 @mixin GODS {
   .Anubis,
