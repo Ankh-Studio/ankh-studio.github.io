@@ -9,7 +9,7 @@ import { AnkhHero } from "./ankhHero";
 import { AnkhServices } from "./ankhServices";
 import { AnkhFounders } from "./ankhFounders";
 import { AnkhContact } from "./ankhContact";
-import { AnkhFooter } from "./AnkhFooter";
+import { AnkhFooter } from "./ankhFooter";
 
 
 const HomePage = () => {
@@ -98,7 +98,7 @@ const HomePage = () => {
       <PlanetEarth />
 
       <ReactLenis root options={{
-        autoRef: false,
+        autoRaf: false,
         ...lenisOptions
       }} ref={lenisRef}>
 

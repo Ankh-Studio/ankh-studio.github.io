@@ -20,4 +20,5 @@ export const radio_canada = Radio_Canada({
 export const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-inter',
 })

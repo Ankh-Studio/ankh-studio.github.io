@@ -1,8 +1,11 @@
-import '@/styles/globals.scss';
-import type { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';  
+import { inter, lexand, radio_canada } from '@/fonts'; 
+import '@/styles/globals.scss'; 
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
-
-export default MyApp;
+export default function MyApp({ Component, pageProps }: AppProps) {  
+  return (  
+    <main className={`${inter.variable} ${lexand.variable} ${radio_canada.variable}`}>  
+      <Component {...pageProps} />  
+    </main>  
+  );  
+}  
