@@ -1,0 +1,128 @@
+@import "./Team_stars.scss";
+
+.starry_bg_animation {
+  position: absolute;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+
+  .stars,
+  .stars1,
+  .stars2,
+  .stars3,
+  .stars4,
+  .stars:after,
+  .stars1:after,
+  .stars2:after,
+  .stars3:after,
+  .stars4:after
+  {
+    background: transparent;
+  }
+
+  .stars {
+    width: 1px;
+    height: 1px;
+    box-shadow: $starShadowOne;
+    background: 'red';
+    -webkit-animation : animStar 100s linear infinite;
+    -moz-animation    : animStar 100s linear infinite;
+    -ms-animation     : animStar 100s linear infinite;
+    animation         : animStar 100s linear infinite;
+
+  }
+  .stars:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    box-shadow: $starShadowOneAfter;
+  }
+
+  .stars2 {
+    width: 1px;
+    height: 1px;
+    box-shadow: $starShadowTwo;
+    -webkit-animation : animStar 100s linear infinite;
+    -moz-animation    : animStar 100s linear infinite;
+    -ms-animation     : animStar 100s linear infinite;
+    animation         : animStar 100s linear infinite;
+  }
+  .stars2:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    box-shadow: $starShadowTwoAfter;
+  }
+
+  .stars3 {
+    width: 3px;
+    height: 3px;
+    box-shadow: $starShadowThree;
+    -webkit-animation : animStar 150s linear infinite;
+    -moz-animation    : animStar 150s linear infinite;
+    -ms-animation     : animStar 150s linear infinite;
+    animation         : animStar 150s linear infinite;
+  }
+  .stars3:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    box-shadow: $starShadowThreeAfter;
+  }
+  .stars4 {
+    width: 1px;
+    height: 1px;
+    box-shadow: $starShadowFour;
+    -webkit-animation : animStar 600s linear infinite;
+    -moz-animation    : animStar 600s linear infinite;
+    -ms-animation     : animStar 600s linear infinite;
+    animation         : animStar 600s linear infinite;
+  }
+  .stars4:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    box-shadow: $starShadowFourAfter;
+  }
+}
+
+@-webkit-keyframes animStar {
+  from {
+    -webkit-transform: translateY(0px);
+  }
+  to {
+    -webkit-transform: translateY(-2000px);
+  }
+}
+@-moz-keyframes animStar {
+  from {
+    -moz-transform: translateY(0px);
+  }
+  to {
+    -moz-transform: translateY(-2000px);
+  }
+}
+@-ms-keyframes animStar {
+  from {
+    -ms-transform: translateY(0px);
+  }
+  to {
+    -ms-transform: translateY(-2000px);
+  }
+}
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}

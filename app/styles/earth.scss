@@ -1,0 +1,173 @@
+$PlanetPos: 30vw;
+$EarthRotation: 600s;// 600s;
+$CloudRotation: 60s;// 60s;
+
+.Earth {
+  position: absolute;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  top: $PlanetPos;
+  height: 100vw;
+  width: 100vw;
+  transform: scale(1.1);
+
+  &_video {
+    position: absolute;
+    width: 100vw;
+    bottom: 50vw;
+    left: 0;
+  }
+
+
+  &_overlay_position {
+    position: absolute;
+    top: 100%;
+    top: calc(100% - 50vw);
+    width: 100%;
+    height: 100%;
+
+    .Earth_shadow {
+      position      : absolute;
+      width         : 100%;
+      height        : 100%;
+      border-radius : 100%;
+      background    : black;
+      box-shadow    :
+        0 -170px 50px 100px hsl(0 0% 0% / 0.7),
+        0 -120px 200px 100px hsl(0 0% 0% / 1),
+        0px -50px 50px 20px hsl(0 0% 0%),
+        inset 0px 300px 50px 20px hsl(0 0% 0%)
+      ;
+
+      translate: -5% -2%;
+
+      transform: scaleX(1.0) scaleY(0.6);
+      @media (min-width: 768px) {
+        transform: scaleX(1.2) scaleY(0.8);
+      }
+      @media (min-width: 1024px) {
+        transform: scaleX(1.2) scaleY(0.9);
+      }
+      @media (min-width: 1440px) {
+        transform: scaleX(1.2) scaleY(1.05);
+      }
+
+      @media (min-width: 2500px) {
+        transform: scaleX(1.2) scaleY(1.215);
+      }
+    }
+    .Earth_atmosphere {
+      position      : absolute;
+      width         : 100%;
+      height        : 100%;
+      border-radius : 100%;
+      transform: scaleX(1.04);
+
+      width: 100%;
+      height: 100%;
+      bottom: 33.33%;
+      box-shadow: 
+        inset 0 25px 50px 20px hsl(247deg 99% 18% / 0.2),
+        inset 0  2px 50px 50px hsl(0deg 0% 80% / 0.3),
+        0 5px 50px 50px hsl(200deg 100% 89% / 0.32),
+        20px   0px 120px 20px hsl(0deg    0% 100% / 0.9),
+        20px -40px 120px 20px hsl(220deg 54%  18% / 0.7),
+        20px -90px 120px 10px hsl(222deg 54%  50% / 0.3),
+        20px -120px 80px 10px hsl(200deg 100% 90% / 0.1)
+      ;
+    }
+
+
+    .Sol {
+      $arc_frac: 0.9fr;
+      $sol_size: 8vw; // 276.48px @ 3456 x 2234
+      mix-blend-mode: screen;
+      background: black;
+
+      position        : absolute;
+      width           : 100%;
+      height          : 75%;
+      translate       : 0 -100%;
+      display: grid;
+      grid-template-rows: calc(1fr - $arc_frac) $arc_frac;
+
+      &_alignment {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      &_solana,
+      &_arc {
+        width: 50vw;
+        display: flex;
+        justify-content: end;
+        background: transparent;
+      }
+
+      &_solana {
+        padding: $sol_size $sol_size;
+
+        .Sun{
+          width   : $sol_size;
+          height  : $sol_size;
+          // background: white;
+          background: 
+            hsl(36deg 100% 74.3%)
+          ;
+          border-radius: 100%;
+          box-shadow:
+            0 0  4vw hsl(36deg 100% 74.3%),
+            0 0 10vw hsl(23deg 100%  51% / 0.5),
+            0 0 10vw hsl( 0deg   0% 100% / 0.5),
+            0 0  1vw hsl(36deg 100% 94.3%),
+            0 0  2vw 1vw white
+          ;
+
+          &_flare {
+            z-index: 10;
+            height: 68vw;
+            position: absolute;
+            width: 6vw;
+            overflow: hidden;
+            translate: -1vw -30vw;
+            filter: blur(10px);
+          }
+
+          &_beam {
+            z-index: 11;
+            position: absolute;
+            border-radius: 100%;
+            width  : 6vw;
+            height : 6vw;
+            box-shadow: 
+              0vw 30vw 20vw 7vw hsl(36deg 100% 74.3% / 0.1),
+              0vw 30vw 20vw 5vw hsl(0deg 0% 100% / 0.23)
+            ;
+            opacity: 0.5;
+          }
+        }
+      }
+      &_arc {
+        .Arc {
+          margin-right: 5vw;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          background-image: url(/images/earth_flare.jpg);
+          background-size: 55%;
+          background-repeat: no-repeat;
+          background-position: 100% 0%;
+          transform: translate3d(0,0,0); // Fixes Safari bug..
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+  .Arc_screen 
+  {
+    mix-blend-mode: screen !important;
+  }
+}
