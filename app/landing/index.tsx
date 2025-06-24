@@ -1,13 +1,13 @@
-import Navigation from '~/components/navigation';
-import PlanetEarth from "app/components/earth"
-import Hero from "~/components/hero";
-import About from "~/components/about";
-import Services from "~/components/services";
-import Founders from '~/components/founders';
-import Contact from '~/components/contact';
-import Portfolio from '~/components/portfolio';
-import Footer from '~/components/footer';
-import { useRef } from 'react';
+import Navigation  from './navigation';
+import PlanetEarth from "./earth"
+import Hero        from "./hero";
+import About       from "./about";
+import Services    from "./services";
+import Founders    from './founders';
+import Contact     from './contact';
+import Portfolio   from './portfolio';
+import Footer      from './footer';
+import { useRef }  from 'react';
 import { ReactLenis, type LenisRef } from 'lenis/react';
 
 const AnkhStudioLanding = () => {
@@ -45,17 +45,6 @@ const AnkhStudioLanding = () => {
         <Portfolio />
         <Contact />
         <Footer />
-        <style>{`
-          @keyframes gradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-          }
-          
-          .animate-gradient {
-            background-size: 200% 200%;
-            animation: gradient 10s ease infinite;
-          }
-        `}</style>
       </div>
   </ReactLenis>
   );

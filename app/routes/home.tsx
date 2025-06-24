@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import AnkhStudioLanding from "../landing/landing"
+import AnkhStudioLanding from "../landing"
 
 export function meta({}: Route.MetaArgs) {
   return [

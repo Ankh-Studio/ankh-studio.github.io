@@ -1,4 +1,4 @@
-import { GradientText } from "./gradient_text";
+import { GradientText } from "~/components/gradient_text";
 
 const Hero = ({
   scrollToSection
@@ -11,8 +11,8 @@ const Hero = ({
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"/>
       
       <div className="relative z-10 text-center max-w-4xl mx-auto">
-        <GradientText>
-        Building AI Systems That Transform Business
+        <GradientText className="mb-6 font-bold text-5xl md:text-7xl">
+          Building AI Systems That Transform Business
         </GradientText>
         <p className="text-xl md:text-2xl text-gray-300 mb-8">
           We are digital architects of the new age, forging technology that bridges millennia. 
