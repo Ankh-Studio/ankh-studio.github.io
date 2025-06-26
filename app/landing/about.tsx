@@ -1,7 +1,11 @@
+import { cn } from "~/utils/cn";
 
 const About = () => {
   return (
-    <section id="about" className="about_container py-20 px-6 relative">
+    <section id="about" className={cn(
+      "about_container  py-20 px-6 relative",
+      "bg-gradient-to-tr via-purple-900/2 from-black to-blue-900/20",
+    )}>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-24 text-center">About Ankh Studio</h2>
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -44,7 +48,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="about_background"/>
+      <div className="about_background top-border-saw"/>
     </section>
   );
 };

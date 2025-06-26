@@ -2,7 +2,7 @@
 
 const Portfolio = () => {
   return (
-    <section id="work" className="py-20 px-6 bg-gray-900/30">
+    <section id="work" className="py-20 px-6 h-[100vh] bg-gray-900/30 flex flex-col justify-center">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Our Work</h2>
         <div className="text-center text-gray-400 mb-12">

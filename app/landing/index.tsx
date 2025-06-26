@@ -9,8 +9,10 @@ import Portfolio   from './portfolio';
 import Footer      from './footer';
 import { useRef }  from 'react';
 import { ReactLenis, type LenisRef } from 'lenis/react';
+import { browserName, CustomView } from "react-device-detect";
 
 const AnkhStudioLanding = () => {
+
   const lenisRef = useRef<LenisRef>(null);
 
   const scrollToSection = (sectionId: string) => {
@@ -32,22 +34,57 @@ const AnkhStudioLanding = () => {
     };
 
   return (
-    <ReactLenis root options={{
-      ...lenisOptions
-    }} ref={lenisRef}>
-      <div className="min-h-screen  text-white overflow-x-hidden bg-[rgba(0,0,0,0.0)]">
-        <Navigation scrollToSection={scrollToSection}/>
-        <PlanetEarth />
-        <Hero scrollToSection={scrollToSection} />
-        <About />
-        <Services />
-        <Founders />
-        <Portfolio />
-        <Contact />
-        <Footer />
-      </div>
-  </ReactLenis>
+    <>
+      {/* -- ReactLenis doesn't work too well on Safari... */}
+      <CustomView condition={browserName === "Safari"}>
+        <div className="min-h-screen  text-white overflow-x-hidden bg-[rgba(0,0,0,0.0)]">
+          <Navigation scrollToSection={scrollToSection}/>
+          <PlanetEarth />
+          <Hero scrollToSection={scrollToSection} />
+          <About />
+          <Services />
+          <Founders />
+          <Portfolio />
+          <Contact />
+          <Footer />
+        </div>
+      </CustomView>
+      <CustomView condition={browserName === "Chrome" || browserName === "Firefox"}>
+        <ReactLenis root options={{
+          ...lenisOptions
+        }} ref={lenisRef}>
+          <div className="min-h-screen  text-white overflow-x-hidden bg-[rgba(0,0,0,0.0)]">
+            <Navigation scrollToSection={scrollToSection}/>
+            <PlanetEarth />
+            <Hero scrollToSection={scrollToSection} />
+            <About />
+            <Services />
+            <Founders />
+            <Portfolio />
+            <Contact />
+            <Footer />
+          </div>
+      </ReactLenis>
+      </CustomView>
+    </>
   );
+  //return (
+  //  <ReactLenis root options={{
+  //    ...lenisOptions
+  //  }} ref={lenisRef}>
+  //    <div className="min-h-screen  text-white overflow-x-hidden bg-[rgba(0,0,0,0.0)]">
+  //      <Navigation scrollToSection={scrollToSection}/>
+  //      <PlanetEarth />
+  //      <Hero scrollToSection={scrollToSection} />
+  //      <About />
+  //      <Services />
+  //      <Founders />
+  //      <Portfolio />
+  //      <Contact />
+  //      <Footer />
+  //    </div>
+  //</ReactLenis>
+  //);
 };
 
 export default AnkhStudioLanding;
