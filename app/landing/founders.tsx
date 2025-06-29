@@ -116,7 +116,6 @@ const Founders = () => {
     <section id="founders">
       <div className="w-[100vw] h-[100vh] bg-black flex flex-col justify-center pb-96">
         <div className={cn(
-          "border",
           "relative w-3/4 h-full mx-auto",
           "flex flex-col justify-start mt-36 pt-18 2xl:mt-48 2xl:pt-24"
         )}>
