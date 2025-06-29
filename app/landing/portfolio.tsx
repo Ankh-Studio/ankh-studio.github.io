@@ -1,6 +1,60 @@
+import { useRef } from "react";
+import CardContainer from "~/components/card";
+import { cn } from "~/utils/cn";
+import type { CardData } from "~/components/card";
 
+const Projects: CardData[] = [
+  {
+    id: 0,
+    title: "Project One",
+    description: "Project One description.",
+    color: "from-purple-500/50 to-cyan-500/50",
+  },
+  {
+    id: 1,
+    title: "Project Two",
+    description: "Project Two description.",
+    color: "from-purple-500/50 to-blue-500/50",
+  },
+  {
+    id: 2,
+    title: "Project Three",
+    description: "Project Three description.",
+    color: "from-purple-500/50 to-green-500/50",
+  },
+  {
+    id: 3,
+    title: "Project Four",
+    description: "Project Four description.",
+    color: "from-purple-500/50 to-red-500/50",
+  },
+];
 
 const Portfolio = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div 
+      ref={containerRef}
+      className={cn(
+        "bg-black flex flex-col justify-center items-center h-screen w-screen",
+        "pb-96"
+      )}
+    >
+      <h1 className={cn(
+        "text-4xl md:text-5xl font-bold mb-12 text-center"
+      )}>Our Work</h1>
+      <CardContainer
+        className={cn(
+          "grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3",
+          "w-full px-4 lg:px-0 lg:w-4/5 xl:w-2/3 max-h-full gap-8"
+        )}
+        containerRef={containerRef}
+        cards={Projects}
+      />
+    </div>
+  );
+
   return (
     <section id="work" className="py-20 px-6 h-[100vh] bg-gray-900/30 flex flex-col justify-center">
       <div className="max-w-6xl mx-auto">

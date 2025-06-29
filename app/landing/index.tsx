@@ -7,11 +7,29 @@ import Founders    from './founders';
 import Contact     from './contact';
 import Portfolio   from './portfolio';
 import Footer      from './footer';
-import { useRef }  from 'react';
+import { useEffect, useRef, useState }  from 'react';
 import { ReactLenis, type LenisRef } from 'lenis/react';
 import { browserName, CustomView } from "react-device-detect";
+import { cn } from '~/utils/cn';
+import BGParticles from '~/components/bg_particles';
 
 const AnkhStudioLanding = () => {
+  const [resizing, setResizing] = useState<boolean>(false);
+
+  useEffect(() => {
+    let resizeTimeout: NodeJS.Timeout;
+
+    const handleResize = () => {
+      setResizing(true);
+      if( resizeTimeout ) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        setResizing(false);
+      }, 400);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const lenisRef = useRef<LenisRef>(null);
 
@@ -33,6 +51,36 @@ const AnkhStudioLanding = () => {
       duration: 2.0,
     };
 
+  if( resizing ){
+    return (
+      <div className={cn(
+        "absolute inset-0 w-[100vw] h-[100vh] overflow-hidden bg-black",
+        "flex justify-center items-center"
+      )}>
+        <div className={cn(
+          "absolute inset-0 w-[100vw] h-[100vh]",
+          "bg-gradient-to-br from-black  via-purple-900/10 to-blue-900/20",
+        )}/>
+        <div className={
+          "absolute -top-4 -left-4 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+        }/>
+        <div className={
+          "absolute -bottom-4 -right-4 w-120 h-120 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-50"
+        }/>
+        <div className={
+          "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-pulse delay-50"
+        }/>
+        <BGParticles 
+          speed={0.1}
+          size={3}
+          total={1000}
+        />
+        <div className={
+          "w-1/2 h-2/3 border border-purple-500/30 rounded-3xl"
+        }></div>
+      </div>
+    );
+  }
   return (
     <>
       {/* -- ReactLenis doesn't work too well on Safari... */}

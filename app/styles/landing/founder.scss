@@ -1,0 +1,15 @@
+
+.founder_container {
+  background: black;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+}
+
+.founder-bg {
+  background: 
+    radial-gradient(ellipse at top left, hsla(122deg, 100%, 85%, 0.33),hsla(270deg, 30%, 20%, 0.8), hsla(122deg, 100%, 85%, 0.1))
+  ;
+  backdrop-filter: blur(10px);
+}

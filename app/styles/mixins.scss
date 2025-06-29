@@ -1,0 +1,5 @@
+
+@mixin Pulsate {
+  animation-delay: 0.5s;
+  animation: pulse 6s ease-in-out infinite alternate;
+}

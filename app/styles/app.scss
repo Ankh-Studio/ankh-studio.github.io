@@ -1,7 +1,16 @@
+@use "./mixins.scss";
 @use "./variables.scss";
-@use "./landing.scss";
-@use "./earth.scss";
 @use "./pulse_card.scss";
+@use "./ankh_logo.scss";
+
+@use "./landing/about.scss";
+@use "./landing/contact.scss";
+@use "./landing/footer.scss";
+@use "./landing/founder.scss";
+@use "./landing/hero.scss";
+@use "./landing/portfolio.scss";
+@use "./landing/services.scss";
+@use "./earth.scss";
 
 @keyframes pulse-glow {
   0%, 100% {
@@ -17,4 +26,11 @@
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient variables.$gradient-time ease infinite;
+}
+
+.top-border-saw {
+    mask: conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50%/0.9em 100%;
+}
+.bottom-border-saw {
+    mask: conic-gradient(from -42.5deg at bottom,#0000,#000 1deg 89deg,#0000 85deg) 50%/0.9em 100%
 }

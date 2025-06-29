@@ -28,7 +28,7 @@ const Hero = ({
         "animate-pulse-purple-slow",
         "max-w-6xl  2xl:max-w-[100vw]",
         "rounded-xl 2xl:rounded-2xl",
-        "pulse-card"
+        "pulse-card border"
       )}>
         <div className={cn(
           "flex flex-col h-full justify-center mt-12",
@@ -79,7 +79,9 @@ const Hero = ({
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6">
+    <section className={cn(
+      "relative min-h-screen md:min-h-screen flex flex-col items-center justify-center px-0 md:px-6"
+    )}>
       { Background }
         <HeroCard />
 

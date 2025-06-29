@@ -1,11 +1,46 @@
+import { useEffect, useRef, useState } from "react";
+import BGParticles from "~/components/bg_particles";
 import { cn } from "~/utils/cn";
 
+type Position = {x: number, y: number};
 const About = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState<Position>({x:0, y: 0});
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      console.log("MOUSE MOVE!")
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100
+        });
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      return () => container.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
   return (
     <section id="about" className={cn(
       "about_container  py-20 px-6 relative",
-      "bg-gradient-to-tr via-purple-900/2 from-black to-blue-900/20",
+      "mb-[60vh] sm:mb-0"
     )}>
+      <BGParticles 
+        speed={0.01}
+        size={4}
+        total={100}
+      /> 
+      <div className={cn(
+        "absolute inset-0 w-screen h-screen",
+      "bg-gradient-to-tr via-purple-900/2 from-black to-blue-900/20",
+
+      )}/>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-24 text-center">About Ankh Studio</h2>
         <div className="grid md:grid-cols-2 gap-12 items-center">

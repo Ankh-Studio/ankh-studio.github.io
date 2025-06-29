@@ -1,0 +1,50 @@
+@use "./mixins.scss";
+
+@keyframes spinGradient {
+  @for $i from 0 through 360 {
+    #{calc($i * 100% / 360)} {
+      background-image: linear-gradient(#{$i}deg, #00FF80A9, #A32D94A9);
+        
+    }
+  }
+}
+
+.AnkhStudio {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 10rem;
+  height: 100%;
+}
+
+.Ankh {
+  @include mixins.Pulsate;
+  position: relative;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-inline: auto;
+  pointer-events: none;
+}
+.Studio {
+  position: relative;
+  margin-inline: auto;
+  bottom: 1.25rem;
+  left: 0.35rem;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 0.68rem;
+  pointer-events: none;
+  filter: brightness(0.66);
+  @include mixins.Pulsate;
+}
+ 
+.StudioBorder {
+  margin-inline: auto;
+  width: 7.2rem;
+  position: relative;
+  bottom: 1.25rem;
+  height: 1px;
+  opacity: 0.4;
+}
