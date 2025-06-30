@@ -2,7 +2,7 @@
   "name": "ankh-studio.github.io",
   "private": true,
   "type": "module",
-  "homepage": "http://ankh-studio.github.io",
+  "homepage": "https://ankh-studio.github.io/ankh-studio.github.io",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
