@@ -8,7 +8,7 @@ type GradientTextProps = {
   via_color?  : ViaColor
   to_color?   : ToColor
   className?   : ClassValue,
-  children    : ReactNode
+  children?   : ReactNode
 }
 
 export const GradientText = ({
@@ -20,8 +20,7 @@ export const GradientText = ({
 }: GradientTextProps) => {
   return (
     <h1 className={cn(
-      "bg-clip-text text-transparent bg-gradient-to-r",
-      "animate-gradient",
+      "bg-clip-text text-transparent bg-gradient-to-r animate-gradient",
       from_color, via_color, to_color,
       className,
     )}>

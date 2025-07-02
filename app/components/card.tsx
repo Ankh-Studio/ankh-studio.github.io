@@ -1,5 +1,6 @@
 import type { ClassValue } from "clsx";
 import { useEffect, useRef, useState } from "react";
+import { isMacOs } from "react-device-detect";
 import { cn } from "~/utils/cn";
 
 type Position = {x: number, y: number};
@@ -95,7 +96,7 @@ const Circle = ({
       )}
       style={{
         transform: isActive ? 
-          `translate(${(mousePos.x - 50) * 0.2}px, ${(mousePos.y - 50) * 0.2}px) scale(1.1)` : 
+          `translate(${(mousePos.x) * 1}px, ${(mousePos.y - 50) * 0.2}px) scale(1.1)` : 
           'translate(0px, 0px) scale(1)'
       }}
     />
@@ -110,31 +111,20 @@ const Card = ({
   description,
   color,
 }: CardProps) => {
-  const Shape = () => {
-    if( id % 4 === 0 ){
-      return <RotatingSquare color="text-purple-400"/>
-    }
-    if( id % 4 === 2 ){
-      return <LargeSquare from="from-blue-400" to="to-cyan-400"/>
-    }
-    if( id % 4 === 3 ){
-      return  <MorphSquare isActive={activeCard === id} from="from-purple-400" to="to-blue-500"/>
-    }
-    if( id % 4 === 4 ){
-      return <Circle 
-        isActive={activeCard === id}
-        mousePos={mousePos}
-        from="from-blue-400" 
-        to="to-cyan-400"
-      />
-    }
-  }
 
   return (
     <div className={cn(
       "relative p-8 rounded-3xl overflow-hidden",
       "backdrop-blur-xl bg-black/10 border border-black/20 shadow-2xl"
-    )}>
+    )}
+      style={{
+        transform: 'translateY(-50px) rotateX(0deg) rotateY(0deg)',
+        //transform: activeCard === id 
+        //  ? `translateY(10px) rotateX(-5deg) rotateY(-${(mousePos.x - 5)  * 0.15}deg)`
+        //  : 'translateY(0px) rotateX(0deg) rotateY(0deg)',
+        //transition: `transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)`
+      }}
+    >
       <div className={cn(
         "absolute inset-0 bg-gradient-to-br",
         color,
@@ -222,7 +212,6 @@ const CardContainer = ({
 }) => {
   const [activeCard, setActiveCard] = useState<number|null>(null);
   const [mousePosition, setMousePosition] = useState<Position>({x:0,y:0});
-  //const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -253,7 +242,7 @@ const CardContainer = ({
           onMouseLeave={() => setActiveCard(null)}
           style={{
             transform: activeCard === card.id 
-              ? `translateY(-10px) rotateX(5deg) rotateY(${(mousePosition.x - 25)  * 0.1}deg)`
+              ? `translateY(-10px) rotateX(5deg) rotateY(${(mousePosition.x - 5)  * 0.15}deg) scale(1.1)`
               : 'translateY(0px) rotateX(0deg) rotateY(0deg)',
             transition: `transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)`
           }}

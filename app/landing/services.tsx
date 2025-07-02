@@ -98,8 +98,8 @@ const ServiceBackground = () => {
         filter={`url(#${blurBorderFilterId})`}
       />
       <circle 
-        cx="50%"
         cy="50%"
+        cx="50%"
         r={Number(radius) - dotBorder/2}
         stroke={"hsla(257deg, 100%, 90%, 1)"}
         fill="none"
@@ -261,15 +261,8 @@ const ServiceCard = ({
         style={{
           zIndex: zIndex,
           width: positionAbsolute && lockedSize ? `${lockedSize.width}px` : '',
-          //transform: activeCard === id
-          //  ? `translate(${(mousePos.x - 50) * 0.1}px, ${(mousePos.y - 50) * 0.1}px)`
-          //  : `translate(0px, 0px)`,
         }}
         onClick={() => {
-          console.log(`Clicked: ${id}`)
-          //if( activeCard === id ) {
-          //  setActiveCard(null);
-          //}
           if( cardsLocked) return;
 
           setCardsLocked(true);
@@ -296,12 +289,12 @@ const ServiceCard = ({
 
           <div className="relative px-6 pt-6 pb-3  sm:px-8 sm:pt-6">
             {/* -- Card Title -- */}
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 leading-tight">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-100/70 mb-4 leading-tight">
               { service.title }
             </h3>
 
             {/* -- Card Summary -- */}
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+            <p className="text-gray-300/50 text-sm sm:text-base leading-relaxed mb-4">
               { service.summary }
             </p>
 

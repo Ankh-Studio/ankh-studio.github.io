@@ -3,6 +3,7 @@ import BGParticles from "~/components/bg_particles";
 import { cn } from "~/utils/cn";
 
 type Position = {x: number, y: number};
+
 const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState<Position>({x:0, y: 0});
