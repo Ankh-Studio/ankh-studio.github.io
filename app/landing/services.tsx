@@ -1,6 +1,8 @@
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useWindowSize } from "~/hooks/windowSize";
 import { cn } from "~/utils/cn";
+
+import Flicking, { useFlickingReactiveAPI } from "@egjs/react-flicking";
 
 type Service = {
   title: string
@@ -65,7 +67,7 @@ const ServiceBackground = () => {
           <rect 
             width="100%" 
             height="100%" 
-            fill="white" 
+            fill="gray-300/50" 
           />
           <circle 
             cx="50%"
@@ -125,7 +127,6 @@ const ServiceBackground = () => {
     <>
     <div className="absolute inset-0 flex -z-2 w-full h-full founder-bg" />
     <div className="absolute inset-0 -z-1 w-full h-full will-change-transform transform-gpu">
-      { svgCircle }
     </div>
     </>
   );
@@ -206,16 +207,17 @@ const ServiceCard = ({
   }, []);
 
 
-  const BgAnimatedOrbs = () => (
-    <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute -top-4 -left-4 w-24 h-24 bg-purple-500/20 rounded-full blur-xl animate-pulse"/>
-      <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-pulse delay-1000"/>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white/5 rounded-full blur-xl animate-pulse delay-500"/>
+  const BgAnimatedOrbs = useMemo(() => ( 
+    <div className="absolute inset-0 overflow-hidden will-change-auto">
+      <div className="absolute -top-4 -left-4 w-24 h-24 bg-purple-500/20 rounded-full blur-xl animate-puls"/>
+      <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl animate-puls delay-1000"/>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gray-300/50/5 rounded-full blur-xl animate-puls delay-500"/>
     </div>
-  );
+  ), []);
+
   const BgGlassReflection = () => (
     <div className={cn(
-      "absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50"
+      "absolute inset-0 bg-gradient-to-br from-gray-300/50/10 via-transparent to-transparent opacity-50"
     )}/>
   );
 
@@ -276,7 +278,7 @@ const ServiceCard = ({
         }}
       >
         <div className={cn(
-          "relative overflow-hidden rounded-2xl backdrop-blur-xl border border-white/20",
+          "relative overflow-hidden rounded-2xl backdrop-blur-xl border border-gray-300/50/20",
           "bg-gradient-to-br from-black/40 via-purple-900/20 to-blue-900/40 shadow-2xl ",
           "transition-all duration-500 ease-out",
           //"min-h-48",
@@ -284,8 +286,9 @@ const ServiceCard = ({
             activeCard === id ? "scale-105 shadow-blue-500/30 border-blue-500/40" : 
               "brightness-80 blur-xs hover:blur-[1px] hover:scale-102 hover:shadow-purple-500/10",
         )}>
-          <BgAnimatedOrbs />
-          <BgGlassReflection />
+        {/*
+            <BgGlassReflection />
+        */}
 
           <div className="relative px-6 pt-6 pb-3  sm:px-8 sm:pt-6">
             {/* -- Card Title -- */}
@@ -305,7 +308,7 @@ const ServiceCard = ({
               "transtion-all duration-1000 ease-out",
               id === activeCard ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
             )}>
-              <div className="border-t border-white/10 pt-4 mt-4">
+              <div className="border-t border-gray-300/50/10 pt-4 mt-4">
                 <p className={cn(
                   "text-gray-400 text-sm leading-relaxed",
                 )}>
@@ -338,7 +341,7 @@ const Services = () => {
 
     const timeout = setTimeout(() => {
       setCardsLocked(false);
-    }, 800);
+    }, 700);
 
     return () => clearTimeout(timeout);
   }, [cardsLocked]);
@@ -386,5 +389,7 @@ const Services = () => {
     </section>
   )
 };
+
+
 
 export default Services;

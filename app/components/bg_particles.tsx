@@ -19,7 +19,6 @@ type ParticlesProps = {
   total : number;
 }
 
-type Position = {x: number, y: number};
 
 const BGParticles = ({
   speed,
@@ -28,34 +27,7 @@ const BGParticles = ({
 }: ParticlesProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [particles, setParticles] = useState<Particle[]>([]);
-  
-  // Might add back in.. For adding a Mouse positional effect. Where you'd use the 
-  // Mouse position X,Y to move a background gradient, which would then show the background blobs.
-  // Took this out here becuase having the gradient move shows the border of each section.
-  //
-  //const [mousePosition, setMousePosition] = useState<Position>({x:0, y: 0});
-  //useEffect(() => {
-  //  const handleMouseMove = (e: MouseEvent) => {
-  //    console.log("MOUSE MOVE!")
-  //    if (containerRef.current) {
-  //      const rect = containerRef.current.getBoundingClientRect();
-  //      setMousePosition({
-  //        x: ((e.clientX - rect.left) / rect.width) * 100,
-  //        y: ((e.clientY - rect.top) / rect.height) * 100
-  //      });
-  //    }
-  //  };
-  //
-  //  const container = containerRef.current;
-  //  if (container) {
-  //    container.addEventListener('mousemove', handleMouseMove);
-  //    return () => container.removeEventListener('mousemove', handleMouseMove);
-  //  }
-  //}, []);
-  //
-  //useEffect(() => {
-  //  console.log(`MOUSE X: ${mousePosition.x} Y: ${mousePosition.y}`);
-  //}, [mousePosition]);
+
 
   useEffect(() => {
     const createParicle: () => Particle = () => ({
@@ -89,7 +61,7 @@ const BGParticles = ({
     <div 
       ref={containerRef}
       className={
-        "absolute inset-0 h-[100vh] w-[100vw] overflow-hidden"
+        "absolute inset-0 h-[100vh] w-[100vw] overflow-hidden will-change-transform"
       }
     >
       <div className={cn(

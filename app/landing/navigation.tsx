@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AnkhLogo from "./ankh_logo";
 
 const Navigation = ({
@@ -29,14 +29,18 @@ const Navigation = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const ankhstudio = useMemo(() => (
+   <AnkhLogo />
+  ), []);
+
 
   return (
       <nav className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled ? 'bg-black/90 backdrop-blur-lg py-4' : 'bg-transparent py-6'
       }`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          { ankhstudio}
           <div className="flex items-center space-x-2">
-           <AnkhLogo />
           </div>
           
           <div className="hidden md:flex space-x-8">

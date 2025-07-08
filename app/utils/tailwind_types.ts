@@ -6,6 +6,10 @@ type Name =
   | 'yellow' | 'zinc';
 
 type Level = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type Opacity = 
+  |  5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50
+  | 55 | 60 | 65 | 70 | 75 | 80 | 85 | 90 | 95 | 100;
+  
 
 type StandardColor = 
   | `${Name}-${Level}`
@@ -16,13 +20,20 @@ type StandardColor =
   | 'white';
 
 type CustomColor   = `[${string}]`;
-type TailwindColor = StandardColor | CustomColor
+export type TailwindColor = StandardColor | `${StandardColor}/${Opacity}` | CustomColor | `${CustomColor}/${Opacity}`
 
-export type BackgroundColor = `bg-${TailwindColor}`;
+export type BackgroundColor = `bg-${TailwindColor}`  ;
+export type BorderColor     = 
+  | `border-${TailwindColor}`
+  | `border-l-${TailwindColor}`
+  | `border-r-${TailwindColor}`
+  | `border-t-${TailwindColor}`
+  | `border-b-${TailwindColor}`;
 export type TextColor       = `text-${TailwindColor}`;
-export type FromColor       = `from-${TailwindColor}`;
-export type ViaColor        = `via-${TailwindColor}`;
-export type ToColor         = `to-${TailwindColor}`;
+export type FromColor       = `from-${TailwindColor}` | `before:from-${TailwindColor}` | `after:from-${TailwindColor}`;
+export type ViaColor        = `via-${TailwindColor}`  | `before:via-${TailwindColor}`  | `after:via-${TailwindColor}`;
+export type ToColor         = `to-${TailwindColor}`   | `before:to-${TailwindColor}`   | `after:to-${TailwindColor}`;
+export type TWColor   = FromColor | ViaColor | ToColor;
 
 type TextSize = 
   | 'xs'  | 'sm'  | 'base' | 'lg'  | 'xl' 

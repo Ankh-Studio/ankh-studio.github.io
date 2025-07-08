@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import BGParticles from "~/components/bg_particles";
 import { cn } from "~/utils/cn";
 
@@ -27,16 +27,38 @@ const About = () => {
     }
   }, []);
 
+  const particles = useMemo(() => (
+    <BGParticles 
+        speed={0.01}
+        size={4}
+        total={100}
+    />
+  ), []);
+
+  const codeAnimation = useMemo(() => (
+    <div className="relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur-3xl opacity-20"></div>
+      <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-lg p-8 border border-gray-800">
+        <div className="space-y-4">
+          <div className="h-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded animate-pulse"></div>
+          <div className="h-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded animate-pulse delay-75"></div>
+          <div className="h-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded animate-pulse delay-150"></div>
+          <div className="flex space-x-2 mt-6">
+            <div className="w-3 h-3 bg-purple-400 rounded-full animate-ping"></div>
+            <div className="w-3 h-3 bg-blue-400 rounded-full animate-ping delay-75"></div>
+            <div className="w-3 h-3 bg-purple-400 rounded-full animate-ping delay-150"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ), []);
+
   return (
     <section id="about" className={cn(
       "about_container  py-20 px-6 relative",
       "mb-[60vh] sm:mb-0"
     )}>
-      <BGParticles 
-        speed={0.01}
-        size={4}
-        total={100}
-      /> 
+    { particles }
       <div className={cn(
         "absolute inset-0 w-screen h-screen",
       "bg-gradient-to-tr via-purple-900/2 from-black to-blue-900/20",
@@ -67,21 +89,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur-3xl opacity-20"></div>
-            <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-lg p-8 border border-gray-800">
-              <div className="space-y-4">
-                <div className="h-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded animate-pulse"></div>
-                <div className="h-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded animate-pulse delay-75"></div>
-                <div className="h-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded animate-pulse delay-150"></div>
-                <div className="flex space-x-2 mt-6">
-                  <div className="w-3 h-3 bg-purple-400 rounded-full animate-ping"></div>
-                  <div className="w-3 h-3 bg-blue-400 rounded-full animate-ping delay-75"></div>
-                  <div className="w-3 h-3 bg-purple-400 rounded-full animate-ping delay-150"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          { codeAnimation }
         </div>
       </div>
       <div className="about_background top-border-saw"/>

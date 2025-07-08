@@ -1,13 +1,13 @@
 import { cn } from "~/utils/cn";
 import type { ReactNode } from "react";
-import type { FromColor, ToColor, ViaColor } from "~/utils/tailwind_types";
+import type { FromColor, ToColor, TWColor, ViaColor } from "~/utils/tailwind_types";
 import type { ClassValue } from "clsx";
 
 type GradientTextProps = {
-  from_color? : FromColor
-  via_color?  : ViaColor
-  to_color?   : ToColor
-  className?   : ClassValue,
+  from_color? : TWColor,
+  via_color?  : TWColor,
+  to_color?   : TWColor,
+  className?  : ClassValue,
   children?   : ReactNode
 }
 

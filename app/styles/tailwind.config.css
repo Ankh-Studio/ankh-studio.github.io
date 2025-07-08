@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  --ms  : 320px;
+  --mm  : 375px;
+  --ml  : 425px;
+  --md  : 768px;
+  --lg  : 1024px;
+  --xl  : 1280px;
+  --2xl : 1440px;
+  --3xl : 2560px;
+  --4xl : 3200px;
+}
+
+:root {
+  --ms: 320px;
+}
+
+@theme {
+  --shadow-primary-btn: 0 10px 20px hsla(270deg, 50%, 50%, 0.4);
+  --shadow-primary-container: 0 20px 40px hsla(270deg, 50%, 50%, 0.2);
+
+  /*--breakpoint-*: initial;*/
+  --breakpoint-ms:  320px;
+  --breakpoint-mm:  375px;
+  --breakpoint-ml:  430px;
+  --breakpoint-md:  768px;
+  --breakpoint-lg:  1024px;
+
+  /*--breakpoint-landscape-ms: 931px or landscape;*/
+
+  --breakpoint-xl:  1280px;
+  --breakpoint-2xl: 1440px;
+  --breakpoint-3xl: 2560px;
+  --breakpoint-4xl: 3200px;
+
+
+  --font-script       : Great Vibes, cursive;
+  --font-merriweather : Merriweather, sans-serif;
+  --font-inter        : Inter, -apple-system, sans-serif;
+
+  --text-*    : initial;
+  --text-xs   : clamp(0.75rem, 0.6121rem + 0.6897vw, 1.25rem);
+  --text-sm   : clamp(0.875rem, 0.7141rem + 0.8046vw, 2.225rem);
+  --text-base : clamp(1rem, 0.8161rem + 0.9195vw, 3rem);
+  --text-lg   : clamp(1.125rem, 0.9181rem + 1.0345vw, 3.375rem);
+  --text-xl   : clamp(1.25rem, 1.0201rem + 1.1494vw, 3.75rem);
+  --text-2xl  : clamp(1.5rem, 1.2241rem + 1.3793vw, 4.5rem);
+  --text-3xl  : clamp(1.875rem, 1.5302rem + 1.7241vw, 5.625rem);
+  --text-4xl  : clamp(2.3rem, 1.7851rem + 2.5747vw, 7.9rem);
+  /*clamp(2.25rem, 1.8362rem + 2.069vw, 6.75rem);*/
+  --text-5xl  : clamp(3rem, 2.4483rem + 2.7586vw, 9rem);
+  --text-6xl  : clamp(3.75rem, 3.0603rem + 3.4483vw, 11.25rem);
+  --text-7xl  : clamp(4.5rem, 3.6724rem + 4.1379vw, 13.5rem);
+  --text-8xl  : clamp(6rem, 4.8966rem + 5.5172vw, 18rem);
+  --text-9xl  : clamp(8rem, 6.5287rem + 7.3563vw, 24rem);
+
+
+  --leading-clamp-h1 : clamp(1rem, 10vw, 88px);
+  --leading-clamp-h2 : clamp(0.5rem, 2.5vw, 36px);
+  --leading-clamp-p  : clamp(0.75rem, 2.5vw, 1.75rem);
+
+  /* !-- Tailwind Animations --! */
+  --animate-slideup-1: slideUp 0.8s ease 1.0s  forwards;
+  --animate-slideup-2: slideUp 0.8s ease 0.1s forwards;
+  --animate-slideup-3: slideUp 0.8s ease 0.2s forwards;
+  --animate-slideup-4: slideUp 0.8s ease 0.3s forwards;
+  --animate-slideup-5: slideUp 0.8s ease 0.4s forwards;
+  --animate-slideup-6: slideUp 0.8s ease 0.5s forwards;
+  --animate-slideright-1: slideInRight 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.25s forwards;
+  --animate-slideright-2: slideInRight 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.1s forwards;
+
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100vw);
+    }
+    to {
+      transform: translateX(0vw);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+}
+
+
+.md\:max-lg\:hidden {
+  @media (width >= 48rem /* 768px */) {
+    @media (width < 64rem /* 1024px */) {
+      display: none;
+    }
+  }
+}
+
+ /*!-- Landscape Media Queries: From Small Mobile Screens up to 4k Ultrawide --!*/
+@custom-variant landscape-xs {
+  @media (width >= 600px) and ( height >= 300px) {
+    @media (width <= 1370px) and (height <= 1030px){
+      @slot
+    }
+  }
+}
+
+@custom-variant landscape-sm {
+  @media (width >= 667px) and ( height >= 375px) {
+    @media (width <= 1370px) and (height <= 1030px){
+      @slot
+    }
+  }
+}
+
+@custom-variant landscape-md {
+  @media (width >= 844px) and ( height >= 390px) {
+    @media (width <= 1370px) and (height <= 1030px){
+      @slot
+    }
+  }
+}
+
+@custom-variant landscape-lg {
+  @media (width >= 932px) and ( height >= 430px) {
+    @media (width <= 1370px) and (height <= 1030px){
+      @slot
+    }
+  }
+}
+
+@custom-variant landscape-xl {
+  @media (width >= 1024px) and ( height >= 768px) {
+    @media (width <= 1370px) and (height <= 1030px){
+      @slot
+    }
+  }
+}
+
+@custom-variant landscape-2xl {
+  @media (width >= 1366px) and ( height >= 1024px) {
+    @media (width <= 1370px) and (height <= 1030px){
+      @slot
+    }
+  }
+}
+/*560x1080*/
+
+@custom-variant landscape-3xl {
+  @media (width >= 2560px) and (width >= 1080px) {
+    @slot
+  }
+}
+
+@custom-variant landscape-4xl {
+  @media (width >= 5260px) and (width >= 2160px) {
+    @slot
+  }
+}
+
+@forms {
+
+}

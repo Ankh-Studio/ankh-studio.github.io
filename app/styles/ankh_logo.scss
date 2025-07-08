@@ -19,7 +19,7 @@
 }
 
 .Ankh {
-  @include mixins.Pulsate;
+  // @include mixins.Pulsate;
   position: relative;
   font-size: 2.5rem;
   font-weight: 600;
@@ -36,8 +36,8 @@
   font-weight: 300;
   letter-spacing: 0.68rem;
   pointer-events: none;
+  // @include mixins.Pulsate;
   filter: brightness(0.66);
-  @include mixins.Pulsate;
 }
  
 .StudioBorder {

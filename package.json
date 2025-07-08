@@ -6,12 +6,14 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
+    "vite": "vite --host",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@egjs/react-flicking": "^4.14.0",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
     "clsx": "^2.1.1",

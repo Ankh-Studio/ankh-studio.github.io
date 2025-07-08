@@ -34,25 +34,27 @@ const Portfolio = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div 
-      ref={containerRef}
-      className={cn(
-        "bg-black flex flex-col justify-center items-center h-screen w-screen",
-        "pb-96"
-      )}
-    >
-      <h1 className={cn(
-        "text-4xl md:text-5xl font-bold mb-12 text-center"
-      )}>Our Work</h1>
-      <CardContainer
+    <section id="work" >
+      <div 
+        ref={containerRef}
         className={cn(
-          "grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3",
-          "w-full px-4 lg:px-0 lg:w-4/5 xl:w-2/3 max-h-full gap-8"
+          "bg-black flex flex-col justify-center items-center h-screen w-screen",
+          "pb-96"
         )}
-        containerRef={containerRef}
-        cards={Projects}
-      />
-    </div>
+      >
+        <h1 className={cn(
+          "text-4xl md:text-5xl font-bold mb-12 text-center"
+        )}>Our Work</h1>
+        <CardContainer
+          className={cn(
+            "grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3",
+            "w-full px-4 lg:px-0 lg:w-4/5 xl:w-2/3 max-h-full gap-8"
+          )}
+          containerRef={containerRef}
+          cards={Projects}
+        />
+      </div>
+    </section>
   );
 
   //return (
